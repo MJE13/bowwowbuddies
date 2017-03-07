@@ -41,6 +41,7 @@ export default class Messages extends Component {
       })
       .done(function(result){
         console.log(result)
+        //var res = result;
       }) 
     }
 
@@ -51,10 +52,13 @@ export default class Messages extends Component {
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
+            <label for="user1">User1</label>
             <input className="user1" type="textbox" onChange={this.user1Set.bind(this)}></input>
+            <label for="user2">User2</label>
             <input className="user2" type="textbox" onChange={this.user2Set.bind(this)}></input>
-            <textArea className="Message" onChange={this.textSet.bind(this)}></textArea>
+            <textArea className="Message" placeholder="Enter Message (bark)" onChange={this.textSet.bind(this)}></textArea>
             <button onClick={this.submitMessage.bind(this)}>Submit</button>
+            <div></div>
         </div>
       );
     }

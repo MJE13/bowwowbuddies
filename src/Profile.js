@@ -42,7 +42,9 @@ export default class Profile extends Component {
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </div>
+            <label for="user">Username</label>
             <input className="user" type="textbox" onChange={this.userName.bind(this)}></input>
+            <label for="password">Password</label>
             <input className="password" type="textbox" onChange={this.passWord.bind(this)}></input>
             <button onClick={this.submitProfile.bind(this)}>Submit</button>
         </div>
