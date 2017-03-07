@@ -16,8 +16,8 @@ export default class App extends Component {
   render(){ // the various routes to come in
     return (<Router history={browserHistory}>
       <Route path='/Profile' component={Profile}/>
-      <Route path='/Messages' component={Messages} />
-      <Route path='*' component={FourOhFour} />
+      <Route path='/Messages' component={Messages}/>
+      <Route path='*' component={FourOhFour}/>
     </Router>)
   }
 
