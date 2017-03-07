@@ -5,18 +5,18 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "jquery": "^3.1.1",
     "mongoose": "^4.8.6",
     "morgan": "^1.8.1",
     "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "sendbird": "^3.0.25"
+    "react-dom": "15.4.2" 
   },
   "devDependencies": {
     "react-scripts": "0.9.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "api"  :  "nodemon server",
+    "api": "nodemon server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
