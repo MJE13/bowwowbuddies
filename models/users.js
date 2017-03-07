@@ -7,4 +7,11 @@ var UserSchema = new Schema({
 	password: String
 })
 
+var MessageSchema = Schema({
+	user1: String,
+	user2: String,
+	text: String,
+	timestamp: { type: Date, default : new Date() }
+})
+
 module.exports = mongoose.model('User', UserSchema);

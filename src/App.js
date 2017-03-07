@@ -3,6 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+//setState 
+//functions for setting username and password with ajax call when click submit button
+//different api ajax method for posting message, and another for app.put
+
+
+  submitEvent(){
+    $.ajax({
+            method: 'POST', 
+            url:'http://localhost:3001/api/user',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                name: this.state.name,
+                date: this.state.date
+              })
+          })
+          .done(function(result){
+            console.log(result)
+          })
+  }
+
   render() {
     return (
       <div className="App">

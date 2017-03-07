@@ -15,7 +15,8 @@
     "react-scripts": "0.9.3"
   },
   "scripts": {
-    "start": "nodemon server & react-scripts start",
+    "start": "react-scripts start",
+    "api"  :  "nodemon server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
