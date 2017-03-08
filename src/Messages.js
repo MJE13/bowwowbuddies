@@ -99,22 +99,23 @@ recieveMessage(){
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
-            <label htmlFor="from">from:</label>
+          <div>
+            <label htmlFor="from">From:</label>
             <input className="from" type="textbox" onChange={this.fromSet.bind(this)}></input>
-            <label htmlFor="to">to:</label>
-            <input className="to" type="textbox" onChange={this.toSet.bind(this)}></input>
-            <textArea className="Message" placeholder="Enter Message (bark)" onChange={this.textSet.bind(this)}></textArea>
-            <button onClick={this.submitMessage.bind(this)}>Submit</button>
-        </div>
-        <div>
-            <label htmlFor="user1">user1:</label>
+            <label htmlFor="to">   To:</label>
+            <input className="to" type="textbox" onChange={this.toSet.bind(this)}></input> <br/>
+            <br/><textArea className="Message" placeholder="Enter Message (bark)" onChange={this.textSet.bind(this)}></textArea><br/>
+            <button onClick={this.submitMessage.bind(this)}>Submit</button><br/> <br/>
+          </div>
+          <div>
+            <label htmlFor="user1">User1:</label>
             <input className="user1" type="textbox" onChange={this.user1Set.bind(this)}></input>
-            <label htmlFor="user2">user2:</label>
+            <label htmlFor="user2">    User2:</label>
             <input className="user2" type="textbox" onChange={this.user2Set.bind(this)}></input>
             <button onClick={this.recieveMessage.bind(this)}>Refresh</button>
             <MessagePane messages={this.state.messages} />
+          </div>
         </div>
-          <div id="result">" dsfadfsasdf"</div>
         </div>
       );
     }

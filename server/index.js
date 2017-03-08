@@ -16,11 +16,16 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.put('/api/user', function(req,res){
+app.post('/api/user', function(req,res){
 	console.log('body', req.body);
 	var user = new User ({
 		username: req.body.username,
-		password: req.body.password
+		password: req.body.password,
+		address: req.body.address,
+        about: req.body.about,
+        dogname: req.body.dogname,
+        breed: req.body.breed,
+        anything: req.body.anything
 	})
 	user.save(function(err, result){
 		if (err) {
