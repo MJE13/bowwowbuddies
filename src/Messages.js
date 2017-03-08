@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
+import MessagePane from './MessagePane'
 
 export default class Messages extends Component {
   constructor(props){
@@ -11,8 +12,13 @@ export default class Messages extends Component {
       to: "",
       text: "",
       user1:"",
-      user2:""
+      user2:"",
+      messages : []
     };
+  }
+
+  componentWillMount(){
+    setInterval(this.recieveMessage.bind(this), 3000)
   }
 
   fromSet(event) {
@@ -43,8 +49,9 @@ export default class Messages extends Component {
             to: this.state.to,
             text: this.state.text
           })
-      })
-      .done(function(result){
+    })
+      .done((result) => {
+        self.recieveMessage()
         console.log(result) 
     }) 
   }
@@ -60,10 +67,15 @@ recieveMessage(){
   // }).done(function(response){
   //   console.log(response);
   // })
-  $.get('http://localhost:3001/api/messages', { user1: this.state.user1, user2: this.state.user2 }, function(response){ console.log(response) })
+  var self = this
+  $.get('http://localhost:3001/api/messages', 
+        {user1: this.state.user1, user2: this.state.user2}, 
+        function(response){ 
+            self.setState({messages : response})
+        })
 }
 
-
+  //$.get('http://localhost:3001/api/messages', { user1: this.state.user1, user2: this.state.user2 }, function(response){ $('#result').html('Results'+response.push) });}
   // recieveMessage(){
   //   $.ajax({
   //     method: 'GET',
@@ -100,7 +112,9 @@ recieveMessage(){
             <label htmlFor="user2">user2:</label>
             <input className="user2" type="textbox" onChange={this.user2Set.bind(this)}></input>
             <button onClick={this.recieveMessage.bind(this)}>Refresh</button>
+            <MessagePane messages={this.state.messages} />
         </div>
+          <div id="result">" dsfadfsasdf"</div>
         </div>
       );
     }
