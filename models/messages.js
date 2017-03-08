@@ -3,9 +3,10 @@ var Schema = mongoose.Schema;
 
 
 var MessageSchema = Schema({
-	"user1": String,
-	"user2": String,
-	"text": [String]
+	"from": String,
+	"to": String,
+	"text": [String],
+	"date": {type: Date, default: new Date()}
 })
 
 module.exports = mongoose.model('Message', MessageSchema);
