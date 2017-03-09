@@ -1,5 +1,6 @@
-var Search = require('../models/search')
+var Search = require('../models/search');
 var request = require('superagent');
+var User = require('../models/users');
 
 function create (req, res){
 	console.log('body', req.body);
@@ -29,6 +30,16 @@ function create (req, res){
 			})
 }
 
-module.exports = {
-	create : create
+function recieve (req, res){
+	var address = req.query.address
+	console.log(address)
+	User.find({
+		username: "Turbo"
+	})
+	.exec((err, users) => res.json(users))
+}
+
+ module.exports = {
+	create : create,
+	recieve: recieve
 }
