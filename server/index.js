@@ -1,9 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var User = require('../models/users') //importing users
-var Message = require('../models/messages')
 var app = express();
+var userController = require('../controllers/users')
+var messagesController = require('../controllers/messages')
+var searchesController = require('../controllers/search')
 
 mongoose.connect('mongodb://localhost/doghouse')
 
@@ -16,61 +17,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.post('/api/user', function(req,res){
-	console.log('body', req.body);
-	var user = new User ({
-		username: req.body.username,
-		password: req.body.password,
-		address: req.body.address,
-        about: req.body.about,
-        dogname: req.body.dogname,
-        breed: req.body.breed,
-        anything: req.body.anything
-	})
-	user.save(function(err, result){
-		if (err) {
-			res.status(500)
-			res.json(err)
-		} else {
-			res.send(result);
-		}
-	})
-})
+app.post('/api/user', userController.create)
 
-app.post('/api/messages', function(req,res){
-	console.log('body', req.body);
-	var message = new Message ({
-		from: req.body.from,
-		to: req.body.to,
-		text: req.body.text
-	})
-	message.save(function(err, result){
-		if (err) {
-			res.status(500)
-			res.json(err)
-		} else {
-			res.send(result);
-		}
-	})
-})
-app.get('/api/messages', function(req, res){
-	var user1 = req.query.user1
-	var user2 = req.query.user2
-	console.log(user1, user2)
-	var u1toU2 = {
-		from: user1,
-		to: user2
-	}
-	var u2toU1 = {
-		from: user2,
-		to: user1
-	}
-	Message.find({
-		$or : [u1toU2, u2toU1]
-	})
-	.sort('date')
-	.exec((err, messages) => res.json(messages))
+app.post('/api/messages', messagesController.create)
 
-})
+app.get('/api/messages', messagesController.recieve)
+
+app.post('/api/search', searchesController.create)
+
 
 app.listen(3001)
