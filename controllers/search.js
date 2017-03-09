@@ -13,7 +13,6 @@ function create (req, res){
   		.get(geoURL)
   			.end(function(err, geoRes){
     	   		var location = JSON.parse(geoRes.text).results[0].geometry.location;
-  				console.log(location)
   				var search = new Search ({
 					address: req.body.address,
 					lat: location.lat, 
