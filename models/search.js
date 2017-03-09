@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var searchSchema = new Schema({
 	"address": String,
-	"geoRes": String
+	"lat": Number,
+	"lng" : Number
 })
 
 module.exports = mongoose.model('search', searchSchema);

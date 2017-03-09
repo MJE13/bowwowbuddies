@@ -36,9 +36,7 @@ export default class Messages extends Component {
   user2Set(event) {
     this.setState({user2: event.target.value});
   }
-  // timestampSet(event){
-  //   this.setState({timestamp: this.state.date.toLocaleTimeString()})
-  // }
+
   submitMessage(){
     $.ajax({
         method: 'POST', 
@@ -57,16 +55,7 @@ export default class Messages extends Component {
   }
 
 recieveMessage(){
-  // $.get('http://localhost:3001/api/messages', { user1: "this.state.user1", user2: "this.state.user2" });
-  //   .done(function(data){
-  //     console.log(data);
-  //   })
-  // $.ajax({
-  //   url: `http://localhost:3001/api/messages?user1=${this.state.user1}&user2=${this.state.user2}`,
-  //   method: "GET"
-  // }).done(function(response){
-  //   console.log(response);
-  // })
+
   var self = this
   $.get('http://localhost:3001/api/messages', 
         {user1: this.state.user1, user2: this.state.user2}, 
@@ -74,22 +63,6 @@ recieveMessage(){
             self.setState({messages : response})
         })
 }
-
-  //$.get('http://localhost:3001/api/messages', { user1: this.state.user1, user2: this.state.user2 }, function(response){ $('#result').html('Results'+response.push) });}
-  // recieveMessage(){
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: 'http://localhost:3001/api/messages',
-  //     contentType: 'application/json',
-  //     data: {
-  //       user1:this.state.user1,
-  //       user2:this.state.user2
-  //     }
-  //   })
-  //   .done(function(result){
-  //     console.log(result)
-  //   })
-  // }
 
     render() {
       return (
