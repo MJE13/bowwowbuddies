@@ -21,7 +21,11 @@ function create (req, res){
 				breed: req.body.breed,
 				anything: req.body.anything,
 				lat: location.lat,
-				lng: location.lng
+				lng: location.lng,
+				loc: {
+					location : {
+    					coordinates: [location.lng, location.lat]
+  				}}
 			})
 			user.save(function(err, result){
 				if (err) {

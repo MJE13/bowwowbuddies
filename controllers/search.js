@@ -1,6 +1,9 @@
 var Search = require('../models/search');
 var request = require('superagent');
 var User = require('../models/users');
+var Location = require('../models/location');
+var GeoJSON = require('geojson');
+var mongoose = require('mongoose');
 
 function create (req, res){
 	console.log('body', req.body);
@@ -31,13 +34,27 @@ function create (req, res){
 }
 
 function recieve (req, res){
-	var address = req.query.address
-	console.log(address)
-	User.find({
-		username: "Turbo"
-	})
-	.exec((err, users) => res.json(users))
+	console.log(req.query);
+	var address = req.query.address;
+	//console.log(address)
+
+	User.find( 
+		{
+			loc: {
+				location:
+				{
+			    	$near: [ address.lng, address.lat ] 
+			    },
+			    	$maxDistance : 1610
+			  	}
+		
+	}, function(err, result) {
+			console.log(result);
+			res.end(JSON.stringify(result));
+		}
+	)
 }
+
 
  module.exports = {
 	create : create,
