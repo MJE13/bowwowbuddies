@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
-import Profile from './Profile'
-import SearchPane from './SearchPane'
+import SearchPane from './SearchPane';
 
 export default class Search extends Component {
   constructor(props){

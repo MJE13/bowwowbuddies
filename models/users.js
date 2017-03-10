@@ -9,7 +9,9 @@ var UserSchema = new Schema({
     "about": String,
     "dogname": String,
     "breed": String,
-    "anything": String
+    "anything": String,
+    "lat": Number,
+    "lng": Number
 })
 
 module.exports = mongoose.model('User', UserSchema);
