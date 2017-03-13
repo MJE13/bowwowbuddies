@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 
 app.post('/api/user', userController.create)
 
-// app.post('/api/messages', messagesController.create)
+app.post('/api/messages', messagesController.create)
 
 app.get('/api/messages', messagesController.recieve)
 
