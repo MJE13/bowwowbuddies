@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 
 var MessageSchema = Schema({
-	"from": String,
-	"to": String,
+	"user1": String,
+	"user2": String,
 	"text": [String],
 	"date": {type: Date, default: new Date()}
 })

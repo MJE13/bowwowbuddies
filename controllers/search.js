@@ -8,6 +8,7 @@ function recieve (req, res){
 	var address = req.query.address;
 	console.log(address)
 	var addyPlus = address.replace(/ /g, "+");
+	var distance = req.query.distance;
 	var first = "http://maps.googleapis.com/maps/api/geocode/json?address=";
 	var last = "&AIzaSyDZImnAo3t9Ye0cjExfCq_0mc38ngMS7lM";
 	var geoURL = first.concat(addyPlus).concat(last);
@@ -26,7 +27,7 @@ function recieve (req, res){
 				    			type: "Point",
 				    			coordinates: [location.lng, location.lat] 
 				    		},
-				    		$maxDistance : 50000020304000	
+				    		$maxDistance : distance * 1609.34	
 				  		}	
 					}
 				}, 
