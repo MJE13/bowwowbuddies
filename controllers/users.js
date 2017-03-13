@@ -22,10 +22,9 @@ function create (req, res){
 				anything: req.body.anything,
 				lat: location.lat,
 				lng: location.lng,
-				loc: {
-					location : {
-    					coordinates: [location.lng, location.lat]
-  				}}
+				location : {
+    				coordinates: [location.lng, location.lat]
+  				}
 			})
 			user.save(function(err, result){
 				if (err) {

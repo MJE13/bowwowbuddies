@@ -49,7 +49,7 @@ export default class Messages extends Component {
           })
     })
       .done((result) => {
-        self.recieveMessage()
+        //self.recieveMessage()
         console.log(result) 
     }) 
   }

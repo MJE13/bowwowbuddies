@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var LocationSchema = require('./location').LocationSchema;
-
 
 var UserSchema = new Schema({
 	"username": String,
@@ -11,9 +9,18 @@ var UserSchema = new Schema({
     "dogname": String,
     "breed": String,
     "anything": String,
-    "lat": Number,
     "lng": Number,
-    "loc" : LocationSchema
+    "lat": Number,
+    location : {
+        type: { 
+            type: String,
+            default: 'Point'
+        }, 
+        coordinates: [Number]
+    }
 })
+
+UserSchema.index({ location : '2dsphere' });
+
 
 module.exports = mongoose.model('User', UserSchema);

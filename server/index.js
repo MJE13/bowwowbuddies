@@ -24,8 +24,6 @@ app.post('/api/messages', messagesController.create)
 
 app.get('/api/messages', messagesController.recieve)
 
-app.post('/api/search', searchesController.create)
-
 app.get('/api/user', searchesController.recieve)
 
 
