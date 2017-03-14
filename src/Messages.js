@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import MessagePane from './MessagePane'
+import { browserHistory } from 'react-router'
 
 export default class Messages extends Component {
   constructor(props){
@@ -18,7 +19,11 @@ export default class Messages extends Component {
   }
 
   componentWillMount(){
+    if(!document.cookie){
+      browserHistory.push('/Login')
+    }
     setInterval(this.recieveMessage.bind(this), 3000)
+
   }
 
   fromSet(event) {
@@ -67,6 +72,7 @@ recieveMessage(){
     render() {
       return (
         <div>
+        {document.cookie ? 'LOGGED IN' : 'NOT LOGGED IN'}
         <div className="App">
         <h2>HMU</h2>
           <div className="App-header">

@@ -1,11 +1,14 @@
 {
   "name": "bowwow",
   "version": "0.1.0",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "express-jwt": "^5.1.0",
     "jquery": "^3.1.1",
+    "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.6",
     "morgan": "^1.8.1",
     "react": "15.4.2",
