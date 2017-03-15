@@ -15,18 +15,17 @@ export default class Search extends Component {
     };
   }
   
-  componentWillMount(){
-    if(!document.cookie){
-      browserHistory.push('/Login')
-    }}
 
   addressSet(event) {
     this.setState({address: event.target.value});
   }
 
   distanceSet(event) {
-  	this.setState({distance: event.target.value})
+  	this.setState({distance: event.target.value});
   }
+  // autoAddress(event){
+  //   this.setState({address: event});
+  // }
 
 
   // submitSearch(){
@@ -54,6 +53,9 @@ export default class Search extends Component {
   }
 
     render() {
+      if(this.props.cookieLoaded && !this.props.token){
+        browserHistory.push('/Login')
+      }
       return (
         <div>
         <div className="App">
@@ -62,7 +64,7 @@ export default class Search extends Component {
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
           <div>
-            <label htmlFor="location"> Search for dogs within : (Distance in Miles)</label>
+            <label htmlFor="location"> Search for dogs within : (Distance in Miles) </label>
             <input className="location" type="textbox" onChange={this.distanceSet.bind(this)}></input>
             <label htmlFor="address"> Address:</label>
             <input className="address" type="textbox" onChange={this.addressSet.bind(this)}></input><br/>

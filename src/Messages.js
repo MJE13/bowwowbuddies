@@ -18,10 +18,8 @@ export default class Messages extends Component {
     };
   }
 
-  componentWillMount(){
-    if(!document.cookie){
-      browserHistory.push('/Login')
-    }
+  componentDidMount(){
+
     setInterval(this.recieveMessage.bind(this), 3000)
 
   }
@@ -70,9 +68,12 @@ recieveMessage(){
 }
 
     render() {
+      if(this.props.cookieLoaded && !this.props.token){
+        browserHistory.push('/Login')
+      }
       return (
         <div>
-        {document.cookie ? 'You are logged in!' : 'NOT LOGGED IN'}
+        {this.props.token ? 'You are logged in!' : 'NOT LOGGED IN'}
         <div className="App">
         <h2>HMU</h2>
           <div className="App-header">

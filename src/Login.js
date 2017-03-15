@@ -23,6 +23,7 @@ export default class Login extends Component {
 	}
 
 	submitLogin(){
+		var self = this;
 		$.ajax({
 			method: 'POST',
 			url: 'http://localhost:3001/api/authenticate',
@@ -33,7 +34,8 @@ export default class Login extends Component {
 			})
 		})
 		.done(function(result){
-			document.cookie=result.token	
+			self.props.login(result)
+			console.log(result)
 			browserHistory.push('/Messages')
 		})
 	}
