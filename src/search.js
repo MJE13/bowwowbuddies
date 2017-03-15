@@ -53,6 +53,7 @@ export default class Search extends Component {
   }
 
     render() {
+
       if(this.props.cookieLoaded && !this.props.token){
         browserHistory.push('/Login')
       }
@@ -67,7 +68,8 @@ export default class Search extends Component {
             <label htmlFor="location"> Search for dogs within : (Distance in Miles) </label>
             <input className="location" type="textbox" onChange={this.distanceSet.bind(this)}></input>
             <label htmlFor="address"> Address:</label>
-            <input className="address" type="textbox" onChange={this.addressSet.bind(this)}></input><br/>
+            <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
+            <button onClick={() =>this.setState({address: this.props.address})}>Insert Address </button>
             <button onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>
             <SearchPane userlist={this.state.userlist} />
           </div>
