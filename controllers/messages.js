@@ -1,4 +1,5 @@
 var Message = require('../models/messages') 
+// var Header = require('../src/Header')
 
  function create (req, res){
 	console.log('body', req.body);
@@ -18,8 +19,8 @@ var Message = require('../models/messages')
 }
 
  function recieve (req, res){
- 	var user1 = req.query.user1
- 	var user2 = req.query.user2
+ 	var user1 = req.query.user
+ 	var user2 = req.user.username
  	console.log(user1, user2)
  	var u1toU2 = {
  		from: user1,

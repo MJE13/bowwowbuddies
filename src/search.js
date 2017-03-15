@@ -69,7 +69,7 @@ export default class Search extends Component {
             <input className="location" type="textbox" onChange={this.distanceSet.bind(this)}></input>
             <label htmlFor="address"> Address:</label>
             <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
-            <button onClick={() =>this.setState({address: this.props.address})}>Insert Address </button>
+            <button onClick={() =>this.setState({address: this.props.address})}>Insert Address </button> 
             <button onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>
             <SearchPane userlist={this.state.userlist} />
           </div>

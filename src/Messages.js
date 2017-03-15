@@ -9,11 +9,8 @@ export default class Messages extends Component {
   constructor(props){
     super(props)
     this.state = {
-      from: "",
       to: "",
       text: "",
-      user1:"",
-      user2:"",
       messages : []
     };
   }
@@ -24,8 +21,8 @@ export default class Messages extends Component {
 
   }
 
-  fromSet(event) {
-    this.setState({from: event.target.value});
+  fromSet() {
+    this.setState({from: this.props.username});
   }
   toSet(event){
     this.setState({to: event.target.value});
@@ -33,39 +30,45 @@ export default class Messages extends Component {
   textSet(event) {
     this.setState({text: event.target.value});
   }
-  user1Set(event) {
-    this.setState({user1: event.target.value});
-  }
-  user2Set(event) {
-    this.setState({user2: event.target.value});
+  keyPress(event){
+    if(event.key === 'Enter'){
+      this.submitMessage()
+    }
   }
 
   submitMessage(){
+    console.log(this.state)
+    console.log(this.props.username)
     $.ajax({
         method: 'POST', 
         url:'http://localhost:3001/api/messages',
         contentType: 'application/json',
         data: JSON.stringify({
-            from: this.state.from,
+            from: this.props.username,
             to: this.state.to,
-            text: this.state.text
+            text: this.state.text,
+            token: this.props.token
           })
     })
       .done((result) => {
-        //self.recieveMessage()
+        this.setState({text: ''})
+        this.recieveMessage()
         console.log(result) 
     }) 
   }
 
 recieveMessage(){
 
-  var self = this
-  $.get('http://localhost:3001/api/messages', 
-        {user1: this.state.user1, user2: this.state.user2}, 
+    var self = this
+    $.get('http://localhost:3001/api/messages', 
+        {
+          user: this.state.to,
+          token: this.props.token
+        }, 
         function(response){ 
             self.setState({messages : response})
         })
-}
+  }
 
     render() {
       if(this.props.cookieLoaded && !this.props.token){
@@ -80,20 +83,18 @@ recieveMessage(){
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
           <div>
-            <label htmlFor="from">From:</label>
-            <input className="from" type="textbox" onChange={this.fromSet.bind(this)}></input>
-            <label htmlFor="to">   To:</label>
+            {/*<label htmlFor="from">From:</label>
+            <input className="from" type="textbox" onChange={this.fromSet.bind(this)}></input>*/}
+            <label htmlFor="to">To:</label>
             <input className="to" type="textbox" onChange={this.toSet.bind(this)}></input> <br/>
-            <br/><textArea className="Message" placeholder="Enter Message (bark)" onChange={this.textSet.bind(this)}></textArea><br/>
+            <br/><textArea className="Message" value={this.state.text} onKeyPress={this.keyPress.bind(this)} placeholder="Enter Message" onChange={this.textSet.bind(this)}></textArea><br/>
             <button onClick={this.submitMessage.bind(this)}>Submit</button><br/> <br/>
           </div>
           <div>
-            <label htmlFor="user1">User1:</label>
-            <input className="user1" type="textbox" onChange={this.user1Set.bind(this)}></input>
-            <label htmlFor="user2">    User2:</label>
-            <input className="user2" type="textbox" onChange={this.user2Set.bind(this)}></input>
-            <button onClick={this.recieveMessage.bind(this)}>Refresh</button>
-            <MessagePane messages={this.state.messages} />
+            {/*<label htmlFor="user1">User1:</label>
+            <input className="user1" type="textbox" onChange={this.user1Set.bind(this)}></input>*/}
+
+            <MessagePane messages={this.state.messages.slice(this.state.messages.length - 5)} />
           </div>
         </div>
         </div>

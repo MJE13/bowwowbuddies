@@ -80,7 +80,8 @@ function requireLogin(req, res, next) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;    
+        req.decoded = decoded;
+        req.user = decoded._doc 
         next();
       }
     });
@@ -100,7 +101,7 @@ app.post('/api/user', userController.create)
 
 app.post('/api/messages', requireLogin, messagesController.create)
 
-app.get('/api/messages', messagesController.recieve)
+app.get('/api/messages', requireLogin, messagesController.recieve)
 
 app.get('/api/user', searchesController.recieve)
 
