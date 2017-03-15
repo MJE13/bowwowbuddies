@@ -54,7 +54,9 @@ app.post('/api/authenticate', function(req, res) {
 			res.json({
 				success: true,
 				message: 'Enjoy your hella trill token!',
-				token: token
+				token: token,
+        username: req.body.username,
+        address: user.address
 				});
 			}
 		}

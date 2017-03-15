@@ -72,7 +72,7 @@ recieveMessage(){
     render() {
       return (
         <div>
-        {document.cookie ? 'LOGGED IN' : 'NOT LOGGED IN'}
+        {document.cookie ? 'You are logged in!' : 'NOT LOGGED IN'}
         <div className="App">
         <h2>HMU</h2>
           <div className="App-header">

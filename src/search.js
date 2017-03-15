@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import SearchPane from './SearchPane';
+import { browserHistory } from 'react-router'
 
 export default class Search extends Component {
   constructor(props){
@@ -13,6 +14,11 @@ export default class Search extends Component {
           userlist: []
     };
   }
+  
+  componentWillMount(){
+    if(!document.cookie){
+      browserHistory.push('/Login')
+    }}
 
   addressSet(event) {
     this.setState({address: event.target.value});
@@ -56,10 +62,10 @@ export default class Search extends Component {
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
           <div>
-            <label htmlFor="address"> Address:</label>
-            <input className="address" type="textbox" onChange={this.addressSet.bind(this)}></input>
-            <label htmlFor="location"> Distance in Miles : </label>
+            <label htmlFor="location"> Search for dogs within : (Distance in Miles)</label>
             <input className="location" type="textbox" onChange={this.distanceSet.bind(this)}></input>
+            <label htmlFor="address"> Address:</label>
+            <input className="address" type="textbox" onChange={this.addressSet.bind(this)}></input><br/>
             <button onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>
             <SearchPane userlist={this.state.userlist} />
           </div>

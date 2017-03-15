@@ -33,7 +33,7 @@ export default class Login extends Component {
 			})
 		})
 		.done(function(result){
-			document.cookie=result.token
+			document.cookie=result.token	
 			browserHistory.push('/Messages')
 		})
 	}
