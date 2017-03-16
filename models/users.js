@@ -1,14 +1,22 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 var UserSchema = new Schema({
+    // "image": {img:
+    //             {data: Buffer, contentType: String}
+    //         }
 	"username": {type: String, required: true},
 	"password": {type: String, required: true},
     "admin": {type: Boolean, default: false},
 	"address": {type: String, required: true},
     "about": String,
     "dogname": String,
+    "sex": String,
+    "age": String,
+    "size": String,
     "breed": {type: String},
+    "energylevel": String,
     "anything": String,
     "lng": Number,
     "lat": Number,

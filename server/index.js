@@ -1,15 +1,18 @@
 var express = require('express');
-var morgan = require('morgan')
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
-var userController = require('../controllers/users')
-var messagesController = require('../controllers/messages')
-var searchesController = require('../controllers/search')
+var userController = require('../controllers/users');
+var messagesController = require('../controllers/messages');
+var searchesController = require('../controllers/search');
 //var expressJWT = require('express-jwt')
-var jwt = require('jsonwebtoken')
-var config = require('../config')
-var User = require('../models/users')
+var jwt = require('jsonwebtoken');
+var config = require('../config');
+var User = require('../models/users');
+var fs = require('fs');
+var multer = require('multer');
+var path = require('path');
 
 
 
@@ -20,8 +23,30 @@ app.set('superSecret', config.secret);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(expressJWT({secret:'eichwaldcarlsonking'}).unless({path: ['/login', '/api/user']}));
 app.use(morgan('dev'));
+// app.use(multer({dest: '../models/users', rename: function(fieldname, filename) {
+//     return filename;
+//     },
+//  }));
+
+var suffix = {
+  'image/jpeg' : 'jpg',
+  'image/png' : 'png'
+}
+
+var storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    console.log('directory ',path.join(__dirname, '../public/profilePictures/'))
+    cb(null,path.join(__dirname, '../public/profilePictures'))
+  },
+  filename: function (req, file, cb){
+    console.log('naming file',  file.fieldname + Date.now() +'.'+ suffix[file.mimetype])
+    cb(null, file.fieldname + Date.now() +'.'+ suffix[file.mimetype] )
+  }
+})
+
+var upload = multer({storage: storage}).single("profilePicture")
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -97,6 +122,12 @@ function requireLogin(req, res, next) {
     
   }
 }
+
+app.post('/api/testupload', upload, function(req, res){
+  console.log(req.file.path.split('public')[1])
+  res.json(req.file)
+})
+
 app.post('/api/user', userController.create)
 
 app.post('/api/messages', requireLogin, messagesController.create)
@@ -105,6 +136,7 @@ app.get('/api/messages', requireLogin, messagesController.recieve)
 
 app.get('/api/user', searchesController.recieve)
 
+// app.put('/api/user', requireLogin, userController.edit)
 
 
 app.listen(3001)

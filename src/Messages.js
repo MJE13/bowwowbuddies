@@ -21,8 +21,8 @@ export default class Messages extends Component {
 
   }
 
-  fromSet() {
-    this.setState({from: this.props.username});
+  fromSet() { 
+    this.setState({from: this.props.username}); //since the username is a prop, we do not have to set it in the state, set it as the 'from' field here. 
   }
   toSet(event){
     this.setState({to: event.target.value});
@@ -37,8 +37,6 @@ export default class Messages extends Component {
   }
 
   submitMessage(){
-    console.log(this.state)
-    console.log(this.props.username)
     $.ajax({
         method: 'POST', 
         url:'http://localhost:3001/api/messages',
@@ -47,23 +45,22 @@ export default class Messages extends Component {
             from: this.props.username,
             to: this.state.to,
             text: this.state.text,
-            token: this.props.token
+            token: this.props.token // require a token becuase we tell this route to requireLogin, this ajax call needs authorization
           })
     })
       .done((result) => {
-        this.setState({text: ''})
+        this.setState({text: ''})//after it submits a message, it clears out the text inbox and lets that message RIP! 
         this.recieveMessage()
-        console.log(result) 
     }) 
   }
 
 recieveMessage(){
 
-    var self = this
+    var self = this 
     $.get('http://localhost:3001/api/messages', 
         {
-          user: this.state.to,
-          token: this.props.token
+          user: this.state.to, //recieve messages from the 'to' field
+          token: this.props.token //checking token to authenticate the user for the ajax call to go through
         }, 
         function(response){ 
             self.setState({messages : response})
@@ -71,8 +68,8 @@ recieveMessage(){
   }
 
     render() {
-      if(this.props.cookieLoaded && !this.props.token){
-        browserHistory.push('/Login')
+      if(this.props.cookieLoaded && !this.props.token){ //if the cookie has not loaded or a token has not been granted; you are re-directed to /Login
+        browserHistory.push('/Login') // 'push' you to login page
       }
       return (
         <div>
@@ -83,18 +80,13 @@ recieveMessage(){
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
           <div>
-            {/*<label htmlFor="from">From:</label>
-            <input className="from" type="textbox" onChange={this.fromSet.bind(this)}></input>*/}
             <label htmlFor="to">To:</label>
             <input className="to" type="textbox" onChange={this.toSet.bind(this)}></input> <br/>
             <br/><textArea className="Message" value={this.state.text} onKeyPress={this.keyPress.bind(this)} placeholder="Enter Message" onChange={this.textSet.bind(this)}></textArea><br/>
             <button onClick={this.submitMessage.bind(this)}>Submit</button><br/> <br/>
           </div>
           <div>
-            {/*<label htmlFor="user1">User1:</label>
-            <input className="user1" type="textbox" onChange={this.user1Set.bind(this)}></input>*/}
-
-            <MessagePane messages={this.state.messages.slice(this.state.messages.length - 5)} />
+            <MessagePane messages={this.state.messages.slice(this.state.messages.length - 5)} /> {/*limits message history to the last five messages / lines*/}
           </div>
         </div>
         </div>

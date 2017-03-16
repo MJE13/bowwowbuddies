@@ -47,7 +47,7 @@ export default class Login extends Component {
 			<input className="Username" type="textbox" onChange={this.userName.bind(this)}></input>
 			<label htmlFor="Password"> Password</label>
 			<input className="Password" type="textbox" onChange={this.passWord.bind(this)}></input>
-			<button onClick={this.submitLogin.bind(this)}> Login</button>
+			<button onClick={this.submitLogin.bind(this)}> Login</button><br/>
 			<a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a>
 			</div>
 		);
