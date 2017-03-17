@@ -11,7 +11,7 @@ var UserSchema = new Schema({
     "about": String,
     "dogname": String,
     "sex": String,
-    // "sterile": Boolean,
+    "sterile": Boolean,
     "vaccinations": Boolean,
     "age": String,
     "size": String,

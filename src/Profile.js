@@ -16,7 +16,7 @@ export default class Profile extends Component {
       about: "",
       dogname: "",
       vaccinations: false,
-      // sterile: false, 
+      sterile: false, 
       sex: "",
       age: "",
       size: "",
@@ -67,8 +67,12 @@ export default class Profile extends Component {
     this.setState({energylevel: event.target.value});
   }
 
-  handleInputChange (event) {
+  vacChange (event) {
     this.setState({vaccinations: !this.state.vaccinations})
+  }
+
+  sterileChange (event) {
+    this.setState({sterile: !this.state.sterile})
   }
 
   anySet(event) {
@@ -188,7 +192,15 @@ export default class Profile extends Component {
                   name="vaccs"
                   type="checkbox"
                   checked={this.state.vaccinations}
-                  onChange={this.handleInputChange.bind(this)} />
+                  onChange={this.vacChange.bind(this)} />
+              </label>
+              <label>
+                Spayed or Neutered:
+                <input
+                  name="sterile"
+                  type="checkbox"
+                  checked={this.state.sterile}
+                  onChange={this.sterileChange.bind(this)} />
               </label>
               <label htmlFor="anything">Anything else?</label>
               <textArea className="anything" onChange={this.anySet.bind(this)}></textArea>
