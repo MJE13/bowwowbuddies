@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import ReactDom from 'react-dom';
+import {browserHistory} from 'react-router'
 
 export default class Profile extends Component {
   constructor(props){
@@ -14,8 +15,8 @@ export default class Profile extends Component {
       address: "",
       about: "",
       dogname: "",
-      vaccinations: false,
-      sterile: false, 
+      // vaccinations: false,
+      // sterile: false, 
       sex: "",
       age: "",
       size: "",
@@ -75,6 +76,7 @@ export default class Profile extends Component {
   // }
 
   _handleImageChange(e) {
+    e.preventDefault()
     console.log('yoooooo', e.target.files)
     e.preventDefault();
 
@@ -108,6 +110,7 @@ export default class Profile extends Component {
       })
       .done(function(result){
         console.log(result)
+        browserHistory.push('/Homepage')
       }) 
     }
 
@@ -125,7 +128,7 @@ export default class Profile extends Component {
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </div>
-          <form ref="uploadForm" className="uploader" encType="multipart/form-data">
+          <form ref="uploadForm" className="uploader" onSubmit={(e)=> e.preventDefault()} encType="multipart/form-data">
             <div>
               <h2 htmlFor="headProfile">Owner Profile</h2>
               <label htmlFor="user">Create a Username</label>
@@ -181,8 +184,8 @@ export default class Profile extends Component {
               
               <textArea className="anything" onChange={this.anySet.bind(this)}></textArea>
             </div>
-            <button onClick={this.submitProfile.bind(this)}>Submit</button>
             </form> 
+            <button onClick={this.submitProfile.bind(this)}>Submit</button>
         </div>
       );
     }

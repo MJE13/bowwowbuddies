@@ -1,4 +1,4 @@
-var User = require('../models/users');
+var User = require('../models/users');	
 var request = require('superagent');
 
 function create (req, res){
@@ -19,8 +19,8 @@ function create (req, res){
 				address: req.body.address,
 				about: req.body.about,
 				dogname: req.body.dogname,
-				sex: req.body.sex,
-				sterile: req.body.sterile,
+				// sex: req.body.sex,
+				// sterile: req.body.sterile,
 				vaccinations: req.body.vaccinations,
 			    age: req.body.age,
 			    size: req.body.size,
