@@ -36,7 +36,7 @@ export default class Login extends Component {
 		.done(function(result){
 			self.props.login(result)
 			console.log(result)
-			browserHistory.push('/Messages')
+			browserHistory.push('/Homepage')
 		})
 	}
 

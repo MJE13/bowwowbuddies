@@ -11,7 +11,7 @@ import EditProfile from './EditProfile'
 
 class FourOhFour extends Component {
   render(){
-    return <h1>Page not found. Please report to /Profile and comply.</h1>
+    return <h1>Page not found. Please report to /Login and comply.</h1>
   }
 }
 

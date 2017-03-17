@@ -65,9 +65,9 @@ export default class Search extends Component {
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
           <div>
-            <label htmlFor="location"> Search for dogs within : (Distance in Miles) </label>
+            <label htmlFor="location"> Search for dogs within </label>
             <input className="location" type="textbox" onChange={this.distanceSet.bind(this)}></input>
-            <label htmlFor="address"> Address:</label>
+            <label htmlFor="address"> miles from address:</label>
             <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
             <button onClick={() =>this.setState({address: this.props.address})}>Insert Address </button> 
             <button onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>

@@ -123,18 +123,22 @@ function requireLogin(req, res, next) {
   }
 }
 
-app.post('/api/testupload', upload, function(req, res){
-  console.log(req.file.path.split('public')[1])
-  res.json(req.file)
-})
+// app.post('/api/testupload', upload, function(req, res){
+//   console.log(req.file.path.split('public')[1])
+// //   User.findOneAndUpdate({username: req.body.username} {$set:{imgURL(req.file.path.split('public')[1])}}{
 
-app.post('/api/user', userController.create)
+//   }
+//   res.json(req.file)
+// })
+
+app.post('/api/user', upload, userController.create)
 
 app.post('/api/messages', requireLogin, messagesController.create)
 
 app.get('/api/messages', requireLogin, messagesController.recieve)
 
 app.get('/api/user', searchesController.recieve)
+
 
 // app.put('/api/user', requireLogin, userController.edit)
 

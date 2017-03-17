@@ -1,4 +1,4 @@
-		var User = require('../models/users');
+var User = require('../models/users');
 var request = require('superagent');
 
 function create (req, res){
@@ -13,6 +13,7 @@ function create (req, res){
 		.end(function(err, geoRes){
 	   		var location = JSON.parse(geoRes.text).results[0].geometry.location;
 			var user = new User ({
+				imgURL: req.file.path.split('public')[1],
 				username: req.body.username,
 				password: req.body.password,
 				address: req.body.address,

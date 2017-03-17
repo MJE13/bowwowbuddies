@@ -93,3 +93,10 @@ export default class Profile extends Component {
       );
     }
 }
+
+backend stufff - 
+
+image upload - for index.js
+app.post('/api/testupload', upload, function(req, res){
+  console.log(req.file.path.split('public')[1])
+  User.findOneAndUpdate({username: req.body.username} {$set:{imgURL(req.file.path.split('public')[1])}}{

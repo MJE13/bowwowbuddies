@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
+import './App.css';
 
 export default class Header extends Component {
 	constructor(props){ //declaring the state of our header, not quite sure what super does? maybes overrides other props? idk...
@@ -32,12 +33,12 @@ export default class Header extends Component {
 	render(){
 		return ( 
 			<div>
-				<div>
+				<span className="header">
 					<a href="./homepage">Homepage  </a>
 					<a href="./profile">  Profile  </a>
 					<a href="./messages">  Message  </a>
 					<a href="./search">  Search </a>	
-				</div>		
+				</span>		
 				<div>{this.state.token ? <button onClick={this.logout.bind(this)}>Log out</button> : ''} {/*shows us the state of our header upon login, the clone element, shows current state and makes sure previous state does not interfere*/}
 											{this.props.children && React.cloneElement(this.props.children, {
 																							...this.state, /*this some fly ass es6 shit to refer to all of our state elements*/

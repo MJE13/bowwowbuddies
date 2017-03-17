@@ -3,9 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var UserSchema = new Schema({
-    // "image": {img:
-    //             {data: Buffer, contentType: String}
-    //         }
+    "imgURL": String, 
 	"username": {type: String, required: true},
 	"password": {type: String, required: true},
     "admin": {type: Boolean, default: false},
