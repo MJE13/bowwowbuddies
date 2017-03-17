@@ -20,6 +20,8 @@ function create (req, res){
 				about: req.body.about,
 				dogname: req.body.dogname,
 				sex: req.body.sex,
+				sterile: req.body.sterile,
+				vaccinations: req.body.vaccinations,
 			    age: req.body.age,
 			    size: req.body.size,
 				breed: req.body.breed,

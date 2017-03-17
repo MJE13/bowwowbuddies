@@ -106,7 +106,7 @@ function requireLogin(req, res, next) {
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded;
-        req.user = decoded._doc 
+        req.user = decoded._doc //as long as we're logged in we can refer to the user info by req.user
         next();
       }
     });
@@ -130,6 +130,7 @@ function requireLogin(req, res, next) {
 //   }
 //   res.json(req.file)
 // })
+//)
 
 app.post('/api/user', upload, userController.create)
 
@@ -137,7 +138,10 @@ app.post('/api/messages', requireLogin, messagesController.create)
 
 app.get('/api/messages', requireLogin, messagesController.recieve)
 
+app.get('/api/profile', requireLogin, (req, res) => res.json(req.user))
+
 app.get('/api/user', searchesController.recieve)
+
 
 
 // app.put('/api/user', requireLogin, userController.edit)

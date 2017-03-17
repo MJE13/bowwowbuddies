@@ -14,12 +14,15 @@ export default class Profile extends Component {
       address: "",
       about: "",
       dogname: "",
+      vaccinations: false,
+      sterile: false, 
       sex: "",
       age: "",
       size: "",
       breed: "",
       energylevel: "",
-      anything: ""
+      anything: "",
+      imagePreviewUrl: ''
     };
   }
 
@@ -71,6 +74,23 @@ export default class Profile extends Component {
   //   this.setState({imgURL: event.target})
   // }
 
+  _handleImageChange(e) {
+    console.log('yoooooo', e.target.files)
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      console.log('setting state')
+      this.setState({
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
+  }
+
 
   submitProfile(e){
     e.preventDefault();
@@ -92,6 +112,13 @@ export default class Profile extends Component {
     }
 
     render() {
+      let { imagePreviewUrl } = this.state;
+      let $imagePreview = null;
+      if (imagePreviewUrl) {
+        $imagePreview = (<img src={imagePreviewUrl} />);
+      } else {
+        $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+      }  
       return (
         <div className="App">
         <h1>YOU WILL COMPLY</h1>
@@ -99,7 +126,7 @@ export default class Profile extends Component {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
           <form ref="uploadForm" className="uploader" encType="multipart/form-data">
-            <p>
+            <div>
               <h2 htmlFor="headProfile">Owner Profile</h2>
               <label htmlFor="user">Create a Username</label>
               <input className="user" type="textbox" onChange={this.userName.bind(this)}></input><br/>
@@ -109,12 +136,14 @@ export default class Profile extends Component {
               <input className="address" type="textbox" onChange={this.addRess.bind(this)}></input><br/>
               <label htmlFor="about">About you and your pooch:</label>
               <textArea className="about" onChange={this.aboutYou.bind(this)}></textArea>
-            </p>
-            <p>
+            </div>
+            <div>
               <h2 htmlFor= "headProfile">Dog Profile</h2>
-              <img src="user.imgURL"/>
+              <div className="imgPreview">
+                {$imagePreview}
+              </div>
               <label htmlFor="profilePicture">Upload a Profile Picture </label>
-              <input ref="file" type="file" name="file" className="upload-file"/><br/>
+              <input ref="file" type="file" onChange={(e)=>{console.log('!'); this._handleImageChange(e)}} name="file" className="upload-file"/><br/>
               <label htmlFor="dogname">Name</label>
               <input className="dogname" type="textbox" onChange={this.dogName.bind(this)}></input>
               <label htmlFor="sex">Sex</label>
@@ -122,6 +151,8 @@ export default class Profile extends Component {
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
               </select>
+             {/* <input className="sterile" type="checkbox" checked={this.state.sterile} onChange={this.handleInputChange}>Spayed or Neutered</input>
+              <input className="vaccinations" type="checkbox" checked={this.state.vaccinations} onChange={this.handleInputChange}>Vaccinations up to date</input>*/}
               <label htmlFor="age">Age</label>
               <select className="age">
                 <option value="0-6 mo">Less than 6 months</option>
@@ -149,7 +180,7 @@ export default class Profile extends Component {
               <label htmlFor="anything">Anything else?</label>
               
               <textArea className="anything" onChange={this.anySet.bind(this)}></textArea>
-            </p>
+            </div>
             <button onClick={this.submitProfile.bind(this)}>Submit</button>
             </form> 
         </div>
