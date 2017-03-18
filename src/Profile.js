@@ -79,10 +79,6 @@ export default class Profile extends Component {
     this.setState({anything: event.target.value});
   }
 
-  // photoSet(event) {
-  //   this.setState({imgURL: event.target})
-  // }
-
   _handleImageChange(e) {
     e.preventDefault()
     console.log('yoooooo', e.target.files)

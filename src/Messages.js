@@ -50,7 +50,7 @@ export default class Messages extends Component {
     })
       .done((result) => {
         this.setState({text: ''})//after it submits a message, it clears out the text inbox and lets that message RIP! 
-        this.recieveMessage()
+        this.recieveMessage() //recieves messages after submits info
     }) 
   }
 
