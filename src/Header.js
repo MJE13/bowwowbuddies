@@ -35,9 +35,9 @@ export default class Header extends Component {
 			<div>
 				<span className="header">
 					<a href="./homepage">Homepage  </a>
-					<a href="./profile">  Profile  </a>
+					<a href="./profile">  Create Profile  </a>
 					<a href="./messages">  Message  </a>
-					<a href="./search">  Search </a>	
+					<a href="./search">  Search </a>
 				</span>		
 				<div>{this.state.token ? <button onClick={this.logout.bind(this)}>Log out</button> : ''} {/*shows us the state of our header upon login, the clone element, shows current state and makes sure previous state does not interfere*/}
 											{this.props.children && React.cloneElement(this.props.children, {

@@ -44,14 +44,21 @@ export default class Search extends Component {
 
   searchResult(){
     var self = this
+    console.log("search submitted")
     $.get('http://localhost:3001/api/user', 
           {address: this.state.address, distance: this.state.distance}, 
           function(response){ 
-              console.log(response)
               self.setState({userlist : response})
           })
   }
 
+  keyPress(event){
+    if(event.key === 'Enter'){
+      this.searchResult()
+      this.setState({address: ''}),
+      this.setState({distance: ''})
+    }
+  }
     render() {
 
       if(this.props.cookieLoaded && !this.props.token){
@@ -64,16 +71,16 @@ export default class Search extends Component {
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
           </div>
-          <div>
+          <div onKeyPress={this.keyPress.bind(this)}>
             <label htmlFor="location"> Search for dogs within </label>
-            <input className="location" type="textbox" onChange={this.distanceSet.bind(this)}></input>
+            <input className="location" type="textbox" value={this.state.distance} onChange={this.distanceSet.bind(this)}></input>
             <label htmlFor="address"> miles from address:</label>
             <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
             <button onClick={() =>this.setState({address: this.props.address})}>Insert Address </button> 
             <button onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>
             <SearchPane userlist={this.state.userlist} />
           </div>
-               </div>
+          </div>
         </div>
       );
     }

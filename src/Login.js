@@ -39,14 +39,18 @@ export default class Login extends Component {
 			browserHistory.push('/Homepage')
 		})
 	}
-
+	keyPress(event){
+	  if(event.key === 'Enter'){
+	    this.submitLogin()
+	  }
+	}
 	render() {
 		return(
 			<div className="Login">
 			<label htmlFor="Username"> Username</label>
 			<input className="Username" type="textbox" onChange={this.userName.bind(this)}></input>
 			<label htmlFor="Password"> Password</label>
-			<input className="Password" type="textbox" onChange={this.passWord.bind(this)}></input>
+			<input className="Password" type="textbox" onChange={this.passWord.bind(this)} value={this.state.password} onKeyPress={this.keyPress.bind(this)}></input>
 			<button onClick={this.submitLogin.bind(this)}> Login</button><br/>
 			<a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a>
 			</div>

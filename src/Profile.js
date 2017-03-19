@@ -16,7 +16,7 @@ export default class Profile extends Component {
       about: "",
       dogname: "",
       vaccinations: false,
-      sterile: false, 
+      sterile: false,
       sex: "",
       age: "",
       size: "",
@@ -96,7 +96,6 @@ export default class Profile extends Component {
 
     reader.readAsDataURL(file)
   }
-
 
   submitProfile(e){
     e.preventDefault();

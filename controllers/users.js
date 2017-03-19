@@ -19,7 +19,7 @@ function create (req, res){
 				address: req.body.address,
 				about: req.body.about,
 				dogname: req.body.dogname,
-				// sex: req.body.sex,
+				sex: req.body.sex,
 				sterile: req.body.sterile,
 				vaccinations: req.body.vaccinations,
 			    age: req.body.age,
@@ -36,8 +36,8 @@ function create (req, res){
 			user.save(function(err, result){
 				if (err) {
 				res.status(500)
-			res.json(err)
-			} else {
+				res.json(err)
+				} else {
 				res.send(result);
 				}
 			})
