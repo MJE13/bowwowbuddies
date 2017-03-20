@@ -6,7 +6,8 @@ export default class HomePane extends Component {
     const {username, imgURL} = this.props.profile 
     return (<div>
               <div>
-                {username} {imgURL}
+                {username} 
+                <img src={imgURL} />
               </div>            
             </div>)
   }
