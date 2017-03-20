@@ -12,16 +12,18 @@ export default class Homepage extends Component {
 			profile: {}
 		};
 	}
+	componentWillMount(){
+		var self = this
+				$.get('http://localhost:3001/api/profile',
+				      {token: this.props.token}, //checking token to authenticate the user for the ajax call to go through
+				    function(response){ 
+				    	console.log(response)
+				        self.setState({profile: response});
+				    }
+				)
+	}
 
 	render() {
-		var self = this
-		$.get('http://localhost:3001/api/profile',
-		      {token: this.props.token}, //checking token to authenticate the user for the ajax call to go through
-		    function(response){ 
-		    	console.log(response)
-		        self.setState({profile: response});
-		    }
-		)
 
 		if(this.props.cookieLoaded && !this.props.token){ //checking token to authenticate the user for the ajax call to go through
 		    //browserHistory.push('/Login')
