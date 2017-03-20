@@ -10,10 +10,11 @@ export default class SearchPane extends Component {
 
 class User extends Component{
   render(){
-    const {dogname, breed, address} = this.props.user //these are constant properties of the user
+    const {dogname, breed, address, imgURL} = this.props.user //these are constant properties of the user
     return (<div>
               <div>
-                {dogname} the {breed} is waiting for friends at {address}
+                  <img src={imgURL} />
+                 {dogname} the {breed} is waiting for friends at {address}
               </div>            
             </div>)
   }
