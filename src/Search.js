@@ -4,6 +4,7 @@ import './App.css';
 import $ from 'jquery';
 import SearchPane from './SearchPane';
 import { browserHistory } from 'react-router'
+// import '../controllers/search';
 
 export default class Search extends Component {
   constructor(props){
@@ -23,24 +24,6 @@ export default class Search extends Component {
   distanceSet(event) {
   	this.setState({distance: event.target.value});
   }
-  // autoAddress(event){
-  //   this.setState({address: event});
-  // }
-
-
-  // submitSearch(){
-  //   $.ajax({
-  //       method: 'POST', 
-  //       url:'http://localhost:3001/api/search',
-  //       contentType: 'application/json',
-  //       data: JSON.stringify({
-  //         address: this.state.address
-  //         })
-  //   })
-  //     .done((result) => {
-  //       console.log(result)
-  //   }) 
-  // }
 
   searchResult(){
     var self = this

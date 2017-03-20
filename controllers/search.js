@@ -46,6 +46,7 @@ function findFriend(req, res){
 			}
 		)	
 }
+
 module.exports= {
 	findFriend: findFriend,
 	recieve: recieve
