@@ -6,7 +6,6 @@ var app = express();
 var userController = require('../controllers/users');
 var messagesController = require('../controllers/messages');
 var searchesController = require('../controllers/search');
-//var expressJWT = require('express-jwt')
 var jwt = require('jsonwebtoken');
 var config = require('../config');
 var User = require('../models/users');
@@ -24,10 +23,6 @@ app.set('superSecret', config.secret);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
-// app.use(multer({dest: '../models/users', rename: function(fieldname, filename) {
-//     return filename;
-//     },
-//  }));
 
 var suffix = {
   'image/jpeg' : 'jpg',
@@ -92,6 +87,7 @@ function requireLogin(req, res, next) {
 }
 
 app.post('/api/authenticate', userController.authenticate)
+
 app.post('/api/user', upload, userController.create)
 
 app.post('/api/messages', requireLogin, messagesController.create)
@@ -102,11 +98,8 @@ app.get('/api/profile', requireLogin,(req, res) => res.json(req.user))
 
 app.get('/api/user', searchesController.recieve)
 
+app.get('/api/findFriend/:username', searchesController.findFriend)
 
-
-
-
-// app.put('/api/user', requireLogin, userController.edit)
 
 
 app.listen(3001)

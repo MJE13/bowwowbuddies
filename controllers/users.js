@@ -1,7 +1,6 @@
 var User = require('../models/users');	
 var request = require('superagent');
 var config = require('../config');
-var jwt = require('jsonwebtoken')
 
 
 function create (req, res){

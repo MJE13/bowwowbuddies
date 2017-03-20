@@ -2,6 +2,7 @@ var request = require('superagent');
 var User = require('../models/users');
 var GeoJSON = require('geojson');
 var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken')
 
 function recieve (req, res){
 	var address = req.query.address;
@@ -36,7 +37,16 @@ function recieve (req, res){
 		})
 }
 
-
- module.exports = {
+function findFriend(req, res){
+		User.find({
+			username: req.params.username
+		}, function(err, result) {
+				console.log(err, result)
+				res.json(result)
+			}
+		)	
+}
+module.exports= {
+	findFriend: findFriend,
 	recieve: recieve
 }
