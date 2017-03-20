@@ -1,5 +1,8 @@
 var User = require('../models/users');	
 var request = require('superagent');
+var config = require('../config');
+var jwt = require('jsonwebtoken')
+
 
 function create (req, res){
 	console.log('body', req.body);
@@ -35,15 +38,46 @@ function create (req, res){
 			})
 			user.save(function(err, result){
 				if (err) {
-				res.status(500)
-				res.json(err)
+					res.status(500);
+					res.json(err);
 				} else {
-				res.send(result);
+					const token = jwt.sign(user, config.secret);
+					res.send({token: token, result});
 				}
 			})
 		})
 
-}		
+}	
+
+function authenticate(req, res) {
+	User.findOne({
+		username: req.body.username
+	}, function(err, user) {
+
+		if (err) throw err;
+
+		if (!user) {
+			res.json({success: false, message: 'Sorry Charlie, you aint authorized.' });
+		}else if (user) {
+
+			if (user.password != req.body.password) {
+				res.json({ success: false, message: 'Authentification failed, wrong password'});
+			} else {
+			
+			var token = jwt.sign(user, config.secret);
+
+			res.json({
+				success: true,
+				message: 'Enjoy your hella trill token!',
+				token: token,
+        		username: req.body.username,
+        		address: user.address
+				});
+			}
+		}
+
+  	})
+};	
 
 // function edit(req, res){
 // 	console.log('body', req.body);
@@ -91,5 +125,6 @@ function create (req, res){
 // }
 
 module.exports = {
-	create : create
+	create : create,
+	authenticate: authenticate
 }

@@ -99,6 +99,7 @@ export default class Profile extends Component {
 
   submitProfile(e){
     e.preventDefault();
+    var self = this;
     var fd = new FormData();   
     fd.append('profilePicture', ReactDom.findDOMNode(this.refs.file).files[0]); //appending the profile pic hi tom
     for (var key in this.state){
@@ -113,6 +114,11 @@ export default class Profile extends Component {
       })
       .done(function(result){
         console.log(result)
+        self.props.login({
+          token: result.token,
+          address: self.state.address,
+          username: self.state.username
+        })
         browserHistory.push('/Homepage')
       }) 
     }

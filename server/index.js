@@ -59,38 +59,6 @@ app.get('/', function(req, res) {
 	res.send('Hello!  This is working!')
 })
 
-app.post('/api/authenticate', function(req, res) {
-	User.findOne({
-		username: req.body.username
-	}, function(err, user) {
-
-		if (err) throw err;
-
-		if (!user) {
-			res.json({success: false, message: 'Sorry Charlie, you aint authorized.' });
-		}else if (user) {
-
-			if (user.password != req.body.password) {
-				res.json({ success: false, message: 'Authentification failed, wrong password'});
-			} else {
-			
-			var token = jwt.sign(user, app.get('superSecret'));
-
-			res.json({
-				success: true,
-				message: 'Enjoy your hella trill token!',
-				token: token,
-        username: req.body.username,
-        address: user.address
-				});
-			}
-		}
-
-  	})
-});
-
-
-
 function requireLogin(req, res, next) {
 
   // check header or url parameters or post parameters for token
@@ -123,7 +91,7 @@ function requireLogin(req, res, next) {
   }
 }
 
-
+app.post('/api/authenticate', userController.authenticate)
 app.post('/api/user', upload, userController.create)
 
 app.post('/api/messages', requireLogin, messagesController.create)
@@ -133,6 +101,7 @@ app.get('/api/messages', requireLogin, messagesController.recieve)
 app.get('/api/profile', requireLogin,(req, res) => res.json(req.user))
 
 app.get('/api/user', searchesController.recieve)
+
 
 
 
