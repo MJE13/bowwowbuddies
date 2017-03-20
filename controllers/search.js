@@ -38,7 +38,7 @@ function recieve (req, res){
 }
 
 function findFriend(req, res){
-		User.find({
+		User.findOne({
 			username: req.params.username
 		}, function(err, result) {
 				console.log(err, result)

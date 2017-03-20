@@ -35,7 +35,7 @@ var Message = require('../models/messages')
 		$or : [u1toU2, u2toU1]
 		})
 		.sort('date')
-		.exec((err, messages) => res.json(messages))
+		.exec((err, messages) => res.json(messages)) // tests for a match in the string (res.json)
 		//console.log(req, res)		
 }
 

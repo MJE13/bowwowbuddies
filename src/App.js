@@ -27,7 +27,7 @@ export default class App extends Component {
         <Route path='Profile' component={Profile}/>
         <Route path='Messages' component={Messages}/>
         <Route path='Homepage' component={Homepage}/>
-        <Route path='Friend' component={Friend}/>
+        <Route path='Friend/:username' component={Friend}/>
       </Route>
       <Route path='*' component={FourOhFour}/>
     </Router>)

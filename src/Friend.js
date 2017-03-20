@@ -13,14 +13,18 @@ export default class Friend extends Component {
 		};
 	}
 
-	render() {
+	componentWillMount(){
 		var self = this
-		$.get('http://localhost:3001/api/findFriend/:username',
-		      {token: this.props.token}, //checking token to authenticate the user for the ajax call to go through
+		$.get('http://localhost:3001/api/findFriend/' + this.props.params.username		,
+		    {token: this.props.token}, //checking token to authenticate the user for the ajax call to go through
 		    function(response){ 
 		    	console.log(response)
 		        self.setState({profile: response});
 		    })
+	}
+
+	render() {
+
 		if(this.props.cookieLoaded && !this.props.token){ //checking token to authenticate the user for the ajax call to go through
 		    //browserHistory.push('/Login')
 		}
@@ -30,7 +34,8 @@ export default class Friend extends Component {
 					<h1>Welcome to Bow Wow Buddies!</h1>
 					<br/>
 					<div>
-					  <FriendPane profile={this.state.profile} /> 
+					  <FriendPane
+					   profile={this.state.profile} /> 
 					</div>
 
 				</div>
