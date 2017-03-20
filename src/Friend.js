@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './App.css';
 import $ from 'jquery';
-import './Profile';
-import HomePane from './HomePane';
+//import './Profile';
+import FriendPane from './FriendPane';
 import {browserHistory} from 'react-router';
 
-export default class Homepage extends Component {
+export default class Friend extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
@@ -15,28 +15,23 @@ export default class Homepage extends Component {
 
 	render() {
 		var self = this
-		$.get('http://localhost:3001/api/profile',
+		$.get('http://localhost:3001/api/findFriend/:username',
 		      {token: this.props.token}, //checking token to authenticate the user for the ajax call to go through
 		    function(response){ 
 		    	console.log(response)
 		        self.setState({profile: response});
-		    }
-		)
-
+		    })
 		if(this.props.cookieLoaded && !this.props.token){ //checking token to authenticate the user for the ajax call to go through
 		    //browserHistory.push('/Login')
 		}
 		return(
 
-				<div className="Homepage">
+				<div className="Friendsearchpage">
 					<h1>Welcome to Bow Wow Buddies!</h1>
 					<br/>
 					<div>
-					  <HomePane profile={this.state.profile} /> 
+					  <FriendPane profile={this.state.profile} /> 
 					</div>
-					<a href="./profile">Edit Profile</a><br/>
-					<a href="./messages">Messages</a><br/>
-					<a href="./search">Find a Buddy</a><br/>
 
 				</div>
 			);

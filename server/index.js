@@ -98,7 +98,7 @@ app.get('/api/profile', requireLogin,(req, res) => res.json(req.user))
 
 app.get('/api/user', searchesController.recieve)
 
-app.get('/api/findFriend/:username', searchesController.findFriend)
+// app.get('/api/findFriend/:username', searchesController.findFriend)
 
 
 

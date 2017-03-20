@@ -7,6 +7,7 @@ import Search from './Search'
 import Login from './Login'
 import Header from './Header'
 import Homepage from './Homepage'
+import Friend from './Friend'
 
 class FourOhFour extends Component {
   render(){
@@ -26,6 +27,7 @@ export default class App extends Component {
         <Route path='Profile' component={Profile}/>
         <Route path='Messages' component={Messages}/>
         <Route path='Homepage' component={Homepage}/>
+        <Route path='Friend' component={Friend}/>
       </Route>
       <Route path='*' component={FourOhFour}/>
     </Router>)
