@@ -17,11 +17,11 @@ export default class Profile extends Component {
       dogname: "",
       vaccinations: false,
       sterile: false,
-      sex: "",
-      age: "",
-      size: "",
+      sex: "Female",
+      age: "Less than 6 months",
+      size: "Small",
       breed: "",
-      energylevel: "",
+      energylevel: "Low",
       anything: "",
       imagePreviewUrl: ''
     };
@@ -158,7 +158,7 @@ export default class Profile extends Component {
                 <option value="Male">Male</option>
               </select>
               <label htmlFor="age">Age</label>
-              <select className="age">
+              <select className="age" onChange={this.ageSet.bind(this)} value={this.state.age}>
                 <option value="0-6 mo">Less than 6 months</option>
                 <option value="6-12 mo">6-12 months</option>
                 <option value="1-2">1-2 years</option>
@@ -168,7 +168,7 @@ export default class Profile extends Component {
                 <option value=">12">over 12 years</option>
               </select>
               <label htmlFor="size">Size</label>
-              <select className="size">
+              <select className="size" onChange={this.sizeSet.bind(this)} value={this.state.size}>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
@@ -176,7 +176,7 @@ export default class Profile extends Component {
               <label htmlFor="breed">Breed</label>
               <input className="breed" type="textbox" onChange={this.setBreed.bind(this)}></input><br/>
               <label htmlFor="energylevel">Energy Level</label>
-              <select className="energylevel">
+              <select className="energylevel" onChange={this.energylevelSet.bind(this)} value={this.state.energylevel}>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
