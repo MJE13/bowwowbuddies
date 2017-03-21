@@ -143,7 +143,7 @@ export default class Profile extends Component {
                 <label htmlFor="user">Create a Username</label>
                 <input className="user" type="textbox" onChange={this.userName.bind(this)}></input><br/>
                 <label htmlFor="password">Create a Password</label>
-                <input className="password" type="Password" onChange={this.passWord.bind(this)}></input><br/>
+                <input className="password" type="password" onChange={this.passWord.bind(this)}></input><br/>
                 <label htmlFor="address">Address:</label>
                 <input className="address" type="textbox" onChange={this.addRess.bind(this)}></input><br/>
                 <label htmlFor="about">About you and your pooch:</label>

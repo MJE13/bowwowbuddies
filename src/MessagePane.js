@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 var nameStyle = {
-  color: 'red'
+  color: 'blue'
 }
 
 export default class MessagePane extends Component {

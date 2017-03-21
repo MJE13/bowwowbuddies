@@ -11,15 +11,18 @@ export default class Homepage extends Component {
 		super(props)
 		this.state = {
 			profile: {},
-			messages: {}
+			messages: []
 		};
 	}
 	componentWillReceiveProps(nextProps){
-		this.getProfile(nextProps.token)
+		this.getProfile(nextProps.token);
+		this.getMessages(nextProps.token);
 	}
-	componentWillMount(){
-		this.getProfile(this.props.token)
-	}
+	// componentWillMount(){
+	// 	this.getProfile(this.props.token);
+	// 	this.getMessages(this.props.token);
+	// }
+
 	getProfile(token){
 		var self = this
 		$.get('http://localhost:3001/api/profile',
@@ -34,7 +37,7 @@ export default class Homepage extends Component {
 		var self = this
 		console.log(this.props)
 		$.get('http://localhost:3001/api/sentMessages',
-		     {token: token, to: this.props.params.username, recieved: false}, //checking token to authenticate the user for the ajax call to go through
+		     {token: token}, // , to: this.props.params.username, recieved: false.  checking token to authenticate the user for the ajax call to go through
 
 		    function(response){ 
 		    	console.log(response)
@@ -60,6 +63,7 @@ export default class Homepage extends Component {
 					<a href="./messages">Messages</a><br/>
 					<a href="./search">Find a Buddy</a><br/>
 					<div>
+						<label>New Messages!</label>
 						<SentMessagePane messages={this.state.messages} />
 					</div>
 
