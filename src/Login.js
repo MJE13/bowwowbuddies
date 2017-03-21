@@ -55,6 +55,7 @@ export default class Login extends Component {
 				<button onClick={this.submitLogin.bind(this)}> Login</button><br/>
 				<a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a>
 			</div>
-		);
-	}
+
+
+	)};
 }

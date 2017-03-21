@@ -18,10 +18,10 @@ export default class Homepage extends Component {
 		this.getProfile(nextProps.token);
 		this.getMessages(nextProps.token);
 	}
-	// componentWillMount(){
-	// 	this.getProfile(this.props.token);
-	// 	this.getMessages(this.props.token);
-	// }
+	componentWillMount(){
+		this.getProfile(this.props.token);
+		this.getMessages(this.props.token);
+	}
 
 	getProfile(token){
 		var self = this

@@ -7,8 +7,12 @@ export default class FriendPane extends Component {
           = this.props.profile 
     return (<div>
               <div>
-              <img src={imgURL} />
-                Username: {username} <br/> 
+                <h2 className="username">
+                  {username} 
+                </h2>
+              <img className="friendprofilepic" src={imgURL} /> <br/>
+
+                
                 About: {about} <br/>
                 Dog Name: {dogname} <br/>
                 Sex: {sex} <br/>
