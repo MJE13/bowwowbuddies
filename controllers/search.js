@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken')
 
 function receive (req, res){
+	console.log(req.user);
 	var address = req.query.address;
 	console.log(address)
 	var addyPlus = address.replace(/ /g, "+");
@@ -17,7 +18,7 @@ function receive (req, res){
   			.end(function(err, geoRes){
 		   		var location = JSON.parse(geoRes.text).results[0].geometry.location;
 				console.log(location)
-				User.find({
+				User.find({ 
 					location: {
 				    	$near: {
 				    		$geometry : {
@@ -30,7 +31,10 @@ function receive (req, res){
 				}, 
 				function(err, result) {
 					console.log(err, result)
-					res.json(result)
+					var newRes = result.filter(function(el) {
+						return el.username !== req.user.username;
+					})
+					res.json(newRes)
 				}
 			)
 

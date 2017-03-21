@@ -71,7 +71,7 @@ recieveMessage(){
             <button onClick={this.submitMessage.bind(this)}>Submit</button><br/> <br/>
           </div>
           <div>
-            <MessagePane messages={this.state.messages.slice(this.state.messages.length - 5)} /> {/*limits message history to the last five messages / lines*/}
+            <MessagePane messages={this.state.messages.slice(Math.max(0,this.state.messages.length - 5))} /> {/*limits message history to the last five messages / lines*/}
           </div>
         </div>
       );
