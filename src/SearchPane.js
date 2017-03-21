@@ -11,15 +11,15 @@ export default class SearchPane extends Component {
 class User extends Component{
   findBuddy() {
     var username = this.props.user.username
-    browserHistory.push('/Friend/:username')
+    browserHistory.push('/Friend/'+ username)
   }
   render(){
     const {dogname, breed, address, imgURL} = this.props.user //these are constant properties of the user
     return (<div>
               <div>
-                  <img src={imgURL} />
-                 {dogname} the {breed} is waiting for friends at {address}
-                 <button onClick={this.findBuddy.bind(this)}> View Profile</button>
+                  <img className="SearchPhoto" src={imgURL} /> <br/>
+                 {dogname} the {breed} is waiting for friends at {address}<br/>
+                 <button onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
               </div>            
             </div>)
   }

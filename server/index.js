@@ -92,13 +92,15 @@ app.post('/api/user', upload, userController.create)
 
 app.post('/api/messages', requireLogin, messagesController.create)
 
-app.get('/api/messages', requireLogin, messagesController.recieve)
+app.get('/api/messages', requireLogin, messagesController.receive)
 
 app.get('/api/profile', requireLogin,(req, res) => res.json(req.user))
 
-app.get('/api/user', searchesController.recieve)
+app.get('/api/user', searchesController.receive)
 
 app.get('/api/findFriend/:username', searchesController.findFriend)
+
+app.get('/api/sentMessages', requireLogin, messagesController.sentMessages)
 
 
 

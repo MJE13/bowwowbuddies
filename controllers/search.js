@@ -4,7 +4,7 @@ var GeoJSON = require('geojson');
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken')
 
-function recieve (req, res){
+function receive (req, res){
 	var address = req.query.address;
 	console.log(address)
 	var addyPlus = address.replace(/ /g, "+");
@@ -49,5 +49,5 @@ function findFriend(req, res){
 
 module.exports= {
 	findFriend: findFriend,
-	recieve: recieve
+	receive: receive
 }

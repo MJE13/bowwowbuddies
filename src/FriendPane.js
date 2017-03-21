@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-
-
+import {browserHistory} from 'react-router'
 export default class FriendPane extends Component {
   render(){ 
-    const {username, imgURL, about, dogname, sex, sterile, vaccinations, 
-    	age, size, breed, energylevel, anything} 
+    const {imgURL, username, about, dogname, sex, sterile, vaccinations, 
+        age, size, breed, energylevel, anything} 
           = this.props.profile 
     return (<div>
               <div>
               <img src={imgURL} />
-                'Username: '{username} 
-                {about}
-                'Dog Name: '{dogname}
-                {sex}
-                {sterile}
-                {vaccinations}
-                'Age: '{age}
-                {size}
-                {breed}
-                {energylevel}
-                {anything}
+                Username: {username} <br/> 
+                About: {about} <br/>
+                Dog Name: {dogname} <br/>
+                Sex: {sex} <br/>
+                Spayed or Neutered: {sterile} <br/>
+                Vaccinations up to date: {vaccinations}<br/>
+                Age: {age}<br/>
+                Size: {size}<br/>
+                Breed: {breed} <br/>
+                Energy Level: {energylevel} <br/>
+                Anything else: {anything} <br/>
               </div>            
             </div>)
   }

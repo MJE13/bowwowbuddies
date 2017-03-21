@@ -50,7 +50,7 @@ export default class Search extends Component {
       return (
         <div>
         <div className="App">
-        <h2>Find a Bow Wow!</h2>
+        <h1 className="header">Find a Bow Wow!</h1>
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
           </div>

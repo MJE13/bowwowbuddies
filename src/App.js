@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import {Router, Route, Link, browserHistory } from 'react-router' 
 import Profile from './Profile'
 import Messages from './Messages'
@@ -25,7 +24,7 @@ export default class App extends Component {
         <Route path='Login' component={Login}/>
         <Route path='Search' component={Search}/>
         <Route path='Profile' component={Profile}/>
-        <Route path='Messages' component={Messages}/>
+        <Route path='Messages/:username' component={Messages}/>
         <Route path='Homepage' component={Homepage}/>
         <Route path='Friend/:username' component={Friend}/>
       </Route>

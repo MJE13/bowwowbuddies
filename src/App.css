@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: chalkboardSE-Bold;
+  background-color: white;
 }
 
 .App-logo {
@@ -21,6 +23,12 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.SearchPhoto {
+  border-style: solid;
+  border-width: 5px;
+  height: 200px; 
 }
 
 

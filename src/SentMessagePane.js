@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 var nameStyle = {
-  color: 'red'
+  color: 'green'
 }
 
-export default class MessagePane extends Component {
+export default class SentMessagePane extends Component {
 
   render(){ 
     return (<div> {this.props.messages.map(message => <Message key={message._id} message={message}/>)}</div>) // takes each component of the messages array and it is assigning it as a message component
