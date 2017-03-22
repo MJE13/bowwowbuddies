@@ -60,18 +60,7 @@
  list-style: none;
  display: block;
 }
-/*
-  nav list items
-  1. side by side
-  2. needed for circle positioning
-*/
-/*.menu  {
-  display: inline;
-  float: left;/*1*/
 
-/*
-  nav link items
-*/
 .menu > a {/*1*/
   padding: 12px 40px; /*2*/
   text-decoration: none; /*3*/
