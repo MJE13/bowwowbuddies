@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import $ from 'jquery';
-import {browserHistory} from 'react-router'
+import {browserHistory, Link} from 'react-router'
 import { apiUrl } from '../config'
 
 export default class Login extends Component {
@@ -53,7 +53,7 @@ export default class Login extends Component {
 				<label htmlFor="Password"> Password</label>
 				<input className="Password" type="password" onChange={this.passWord.bind(this)} value={this.state.password} onKeyPress={this.keyPress.bind(this)}></input>
 				<button className="button" onClick={this.submitLogin.bind(this)}> Login</button><br/>
-				<a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a>
+				<Link to="/profile"> Join the Bow Wow Community :)</Link>
 			</div>
 
 
