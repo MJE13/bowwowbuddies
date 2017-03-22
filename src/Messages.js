@@ -57,7 +57,7 @@ recieveMessage(){
           token: this.props.token //checking token to authenticate the user for the ajax call to go through
         }, 
         function(response){ 
-            self.setState({messages : response})
+            self.setState({messages : response || []})
         })
   }
 

@@ -52,7 +52,7 @@ export default class Homepage extends Component {
 
 		    function(response){ 
 		    	console.log(response)
-		        self.setState({messages: response});
+		        self.setState({messages: response || []});
 		    }
 		)
 	}
