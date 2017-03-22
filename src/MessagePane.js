@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 var nameStyle = {
-  color: 'blue'
+  color: 'mediumorchid'
 }
 
 export default class MessagePane extends Component {

@@ -48,6 +48,11 @@
   background-color: #1cbe83;
   background-position: -100% 100%;
 }
+
+.dropdown {
+  background-color: white;
+  border: 1px solid gray;
+}
 .friendpane{
   background-color: white;
   padding: 20px 20px;
@@ -99,6 +104,12 @@
   height: 200px; 
 }
 .homepagepic{
+  border-style: solid;
+  border-color: #1cbe83;
+  border-width: 5px;
+  height: 200px; 
+}
+.previewImage{
   border-style: solid;
   border-color: #1cbe83;
   border-width: 5px;

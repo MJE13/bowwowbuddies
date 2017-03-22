@@ -3,7 +3,7 @@ import {browserHistory} from 'react-router';
 
 
 var nameStyle = {
-  color: 'green'
+  color: 'mediumorchid'
 }
 
 export default class SentMessagePane extends Component {
@@ -15,13 +15,15 @@ export default class SentMessagePane extends Component {
 
 class Message extends Component{ //the is the class that is created on line 10
   messageBuddy() {
-    console.log(this.props)
+    var self = this
     var username = this.props.message.from
     browserHistory.push('/Friend/'+ username)
+    self.props.message.setState({received: true})
+
   }
   render(){
     return (<div>
-              <span style={nameStyle}> {this.props.message.from} :</span> 
+              <span style={nameStyle}> {this.props.message.from}: </span> 
                  {this.props.message.text.join(' ')} {/*not quite sure wtf message.text.join does*/}
                  <button className="button" onClick={this.messageBuddy.bind(this)}> Reply </button><br/>
             </div>)

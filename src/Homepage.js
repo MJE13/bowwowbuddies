@@ -59,7 +59,7 @@ export default class Homepage extends Component {
 					<div>
 					<HomePane profile={this.state.profile} /> 
 					<label>New Messages!</label>
-					<SentMessagePane messages={this.state.messages} />
+					<SentMessagePane messages={this.state.messages.slice(Math.max(0, this.state.messages.length-5))} />
 					</div>
 
 				</div>
