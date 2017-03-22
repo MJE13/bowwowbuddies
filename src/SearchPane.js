@@ -14,13 +14,22 @@ class User extends Component{
     browserHistory.push('/Friend/'+ username)
   }
   render(){
-    const {dogname, breed, address, imgURL} = this.props.user //these are constant properties of the user
+    const {username, age, dogname, sex, breed, imgURL} = this.props.user //these are constant properties of the user
     return (<div>
+              <h2 className="username">
+                {username}
+              </h2>
               <div>
-                  <img className="SearchPhoto" src={imgURL} /> <br/>
-                 {dogname} the {breed} is waiting for friends at {address}<br/>
-                 <button className="button" onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
-              </div>            
+                <img className="SearchPhoto" src={imgURL} /> <br/>
+                <div>
+                  Dog Name: {dogname} <br/>
+                  Sex: {sex} <br/>
+                  Age: {age}<br/>
+                  Breed: {breed} <br/>
+                  <button className="button" onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
+                </div>
+              </div>         
             </div>)
   }
 }
+
