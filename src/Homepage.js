@@ -54,17 +54,12 @@ export default class Homepage extends Component {
 		return(
 
 				<div className="Homepage">
-					<h1>Welcome to Bow Wow Buddies!</h1>
+					<h1 className="header">Welcome to Bow Wow Buddies!</h1>
 					<br/>
 					<div>
-					  <HomePane profile={this.state.profile} /> 
-					</div>
-					<a href="./profile">Edit Profile</a><br/>
-					<a href="./messages">Messages</a><br/>
-					<a href="./search">Find a Buddy</a><br/>
-					<div>
-						<label>New Messages!</label>
-						<SentMessagePane messages={this.state.messages} />
+					<HomePane profile={this.state.profile} /> 
+					<label>New Messages!</label>
+					<SentMessagePane messages={this.state.messages} />
 					</div>
 
 				</div>

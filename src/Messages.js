@@ -68,7 +68,7 @@ recieveMessage(){
       
           <div>
             <br/><textArea className="Message" value={this.state.text} onKeyPress={this.keyPress.bind(this)} placeholder="Enter Message" onChange={this.textSet.bind(this)}></textArea><br/>
-            <button onClick={this.submitMessage.bind(this)}>Submit</button><br/> <br/>
+            <button className="button" onClick={this.submitMessage.bind(this)}>Submit</button><br/> <br/>
           </div>
           <div>
             <MessagePane messages={this.state.messages.slice(Math.max(0,this.state.messages.length - 5))} /> {/*limits message history to the last five messages / lines*/}

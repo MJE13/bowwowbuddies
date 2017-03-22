@@ -54,19 +54,16 @@ export default class Search extends Component {
         <div>
         <div className="App">
         <h1 className="header">Find a Bow Wow!</h1>
-          <div className="App-header">
-            {/*<img src={logo} className="App-logo" alt="logo"/>*/}
           </div>
           <div onKeyPress={this.keyPress.bind(this)}>
             <label htmlFor="location"> Search for dogs within </label>
             <input className="location" type="textbox" value={this.state.distance} onChange={this.distanceSet.bind(this)}></input>
             <label htmlFor="address"> miles from address:</label>
             <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
-            <button onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>
+            <button className="button" onClick={this.searchResult.bind(this)}>Search</button><br/> <br/>
             <SearchPane userlist={this.state.userlist} />
           </div>
           </div>
-        </div>
       );
     }
 }

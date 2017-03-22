@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import {browserHistory} from 'react-router'
@@ -52,7 +51,7 @@ export default class Login extends Component {
 				<input className="Username" type="textbox" onChange={this.userName.bind(this)}></input>
 				<label htmlFor="Password"> Password</label>
 				<input className="Password" type="password" onChange={this.passWord.bind(this)} value={this.state.password} onKeyPress={this.keyPress.bind(this)}></input>
-				<button onClick={this.submitLogin.bind(this)}> Login</button><br/>
+				<button className="button" onClick={this.submitLogin.bind(this)}> Login</button><br/>
 				<a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a>
 			</div>
 

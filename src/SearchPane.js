@@ -19,7 +19,7 @@ class User extends Component{
               <div>
                   <img className="SearchPhoto" src={imgURL} /> <br/>
                  {dogname} the {breed} is waiting for friends at {address}<br/>
-                 <button onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
+                 <button className="button" onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
               </div>            
             </div>)
   }

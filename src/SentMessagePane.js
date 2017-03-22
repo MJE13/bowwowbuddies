@@ -23,7 +23,7 @@ class Message extends Component{ //the is the class that is created on line 10
     return (<div>
               <span style={nameStyle}> {this.props.message.from} :</span> 
                  {this.props.message.text.join(' ')} {/*not quite sure wtf message.text.join does*/}
-                 <button onClick={this.messageBuddy.bind(this)}> Reply </button><br/>
+                 <button className="button" onClick={this.messageBuddy.bind(this)}> Reply </button><br/>
             </div>)
   }
 }

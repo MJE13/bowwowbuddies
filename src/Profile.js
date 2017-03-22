@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import ReactDom from 'react-dom';
@@ -133,10 +132,7 @@ export default class Profile extends Component {
       }  
       return (
         <div className="App">
-          <h1 className="header">YOU WILL COMPLY</h1>
-            <div className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-            </div>
+          <h1 className="header">YOU WILL NEVER COMPLY</h1>
             <form ref="uploadForm" className="uploader" onSubmit={(e)=> e.preventDefault()} encType="multipart/form-data">
               <div>
                 <h2 htmlFor="headProfile">Owner Profile</h2>
@@ -155,7 +151,7 @@ export default class Profile extends Component {
                   {$imagePreview}
                 </div>
                 <label htmlFor="profilePicture">Upload a Profile Picture </label>
-                <input ref="file" type="file" onChange={(e)=>{console.log('!'); this._handleImageChange(e)}} name="file" className="upload-file"/><br/>
+                <input className="file" ref="file" type="file" onChange={(e)=>{console.log('!'); this._handleImageChange(e)}} name="file"/><br/>
                 <label htmlFor="dogname">Name</label>
                 <input className="dogname" type="textbox" onChange={this.dogName.bind(this)}></input>
                 <label htmlFor="sex">Sex</label>
@@ -207,7 +203,7 @@ export default class Profile extends Component {
                 <textArea className="anything" onChange={this.anySet.bind(this)}></textArea>
               </div>
               </form> 
-              <button onClick={this.submitProfile.bind(this)}>Submit</button>
+              <button className="button" onClick={this.submitProfile.bind(this)}>Submit</button>
         </div>
       );
     }

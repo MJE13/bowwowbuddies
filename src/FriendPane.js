@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {browserHistory} from 'react-router'
+import './App.css';
 export default class FriendPane extends Component {
   render(){ 
     const {imgURL, username, about, dogname, sex, sterile, vaccinations, 
         age, size, breed, energylevel, anything} 
           = this.props.profile 
     return (<div>
-              <div>
+              <div className = "friendpane">
                 <h2 className="username">
                   {username} 
                 </h2>

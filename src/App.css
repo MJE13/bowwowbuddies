@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-family: Chalkboard;
+  font-family: Verdana;
   background-color: white;
 }
 
@@ -20,23 +20,98 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.SearchPhoto {
-  border-style: solid;
-  border-width: 5px;
-  height: 200px; 
-}
 .header {
   font-family: Arial Rounded MT Bold;
 }
 
-.friendprofilepic {
+.button {
+  display:inline-block;
+  
+  font-family: 'Verdana';
+  text-decoration:none; 
+  
+  color: #1cbe83;
+  background-color:transparent;
+  border:1px solid #1cbe83;
+  border-radius:100px;
+  
+  padding: .3em 1.2em;
+  margin:5px;
+      
+  background-size: 200% 100%; 
+  background-image: linear-gradient(to right, transparent 50%, #1cbe83 50%);
+  transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
+}
+
+.button:hover{
+  color:rgba(255, 255, 255, 1);
+  background-color: #1cbe83;
+  background-position: -100% 100%;
+}
+.friendpane{
+  background-color: white;
+  padding: 20px 20px;
+}
+
+.menu{
+ padding: 25px; 
+ text-align: center;
+ font-style: 16px Verdana;
+ list-style: none;
+ display: block;
+}
+/*
+  nav list items
+  1. side by side
+  2. needed for circle positioning
+*/
+/*.menu  {
+  display: inline;
+  float: left;/*1*/
+
+/*
+  nav link items
+*/
+.menu > a {/*1*/
+  padding: 12px 40px; /*2*/
+  text-decoration: none; /*3*/
+  color: black; /*4*/
+  border-bottom: 2px solid #eee;
+  transition: all ease .5s;
+}
+
+/*
+  fade out all links on ul hover
+*/
+.menu:hover > a {
+  opacity: .5;
+  transition: all ease .5s;
+}
+
+/*
+  override previous rule to highlight current link
+*/
+.menu > a:hover {
+  opacity: 1;
+  color: #1cbe83;
+  border-color: #1cbe83;
+}
+
+.SearchPhoto {
   border-style: solid;
+  border-color: #1cbe83;
   border-width: 5px;
   height: 200px; 
 }
-
+.friendprofilepic {
+  border-style: solid;
+  border-color: #1cbe83;
+  border-width: 5px;
+  height: 200px; 
+}
+.homepagepic{
+  border-style: solid;
+  border-color: #1cbe83;
+  border-width: 5px;
+  height: 200px; 
+}
