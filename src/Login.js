@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import $ from 'jquery';
 import {browserHistory} from 'react-router'
+import { apiUrl } from '../config'
 
 export default class Login extends Component {
 	constructor(props){
@@ -25,7 +26,7 @@ export default class Login extends Component {
 		var self = this;
 		$.ajax({
 			method: 'POST',
-			url: 'http://localhost:3001/api/authenticate',
+			url: apiUrl + '/api/authenticate',
 			contentType: 'application/json',
 			data: JSON.stringify({
 				username: this.state.username,

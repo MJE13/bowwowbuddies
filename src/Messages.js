@@ -4,6 +4,8 @@ import './App.css';
 import $ from 'jquery';
 import MessagePane from './MessagePane'
 import { browserHistory } from 'react-router'
+import { apiUrl } from '../config'
+
 
 export default class Messages extends Component {
   constructor(props){
@@ -31,7 +33,7 @@ export default class Messages extends Component {
   submitMessage(){
     $.ajax({
         method: 'POST', 
-        url:'http://localhost:3001/api/messages',
+        url: apiUrl + '/api/messages',
         contentType: 'application/json',
         data: JSON.stringify({
             from: this.props.username,
@@ -49,7 +51,7 @@ export default class Messages extends Component {
 recieveMessage(){
 
     var self = this 
-    $.get('http://localhost:3001/api/messages', 
+    $.get(apiUrl + '/api/messages', 
         {
           user: this.props.params.username, //recieve messages from the 'to' field
           token: this.props.token //checking token to authenticate the user for the ajax call to go through

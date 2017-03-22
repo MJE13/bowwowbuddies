@@ -48,7 +48,7 @@ function messageFriend(req, res){
 }
 function sentMessages(req, res){
     console.log(req.user)
-    Message.find({
+    Message.findOne({
         to: req.user.username,
         received: false
     })

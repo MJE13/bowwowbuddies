@@ -5,6 +5,8 @@ import './Profile';
 import HomePane from './HomePane';
 import SentMessagePane from './SentMessagePane';
 import {browserHistory} from 'react-router';
+import { apiUrl } from '../config'
+
 
 export default class Homepage extends Component {
 	constructor(props){
@@ -22,10 +24,19 @@ export default class Homepage extends Component {
 		this.getProfile(this.props.token);
 		this.getMessages(this.props.token);
 	}
-
+	// markTrue(key){
+	// 	var messages = this.state.messages //can't just go change a variable in messages
+	// 	messages.map((message) =>{
+	// 		if (message._id == key){
+	// 			message.recieved = true
+	// 		}
+	// 		return message
+	// 	})//so we are going to change the small bit 
+	// 	this.setState({messages:messages}) //sending array back
+	// }
 	getProfile(token){
 		var self = this
-		$.get('http://localhost:3001/api/profile',
+		$.get(apiUrl + '/api/profile',
 		     {token: token}, //checking token to authenticate the user for the ajax call to go through
 		    function(response){ 
 		    	console.log(response)
@@ -36,8 +47,8 @@ export default class Homepage extends Component {
 	getMessages(token){
 		var self = this
 		console.log(this.props)
-		$.get('http://localhost:3001/api/sentMessages',
-		     {token: token}, // , to: this.props.params.username, recieved: false.  checking token to authenticate the user for the ajax call to go through
+		$.get(apiUrl + '/api/sentMessages',
+		     {token: token}, //, to: this.props.params.username, recieved: false.  checking token to authenticate the user for the ajax call to go through
 
 		    function(response){ 
 		    	console.log(response)
@@ -47,7 +58,7 @@ export default class Homepage extends Component {
 	}
 
 	render() {
-
+		console.log(this.state.messages)
 		if(this.props.cookieLoaded && !this.props.token){ //checking token to authenticate the user for the ajax call to go through
 		    browserHistory.push('/Login')
 		}
@@ -66,4 +77,5 @@ export default class Homepage extends Component {
 			);
 		}
 		
+		//{/*sendMarkTrue={this.markTrue.bind(this)} */}
 }

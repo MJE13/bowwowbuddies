@@ -8,17 +8,25 @@ var nameStyle = {
 
 export default class SentMessagePane extends Component {
 
+  // componentWillReceiveProps(){
+  //   this.setState({markTrue : this.props.markTrue})
+  // }
+
   render(){ 
-    return (<div> {this.props.messages.map(message => <Message key={message._id} message={message}/>)}</div>) // takes each component of the messages array and it is assigning it as a message component
+    return (<div> {this.props.messages.map(message => <Message key={message._id} theKey={message._id} message={message} 
+                //markTrue={this.state.markTrue}
+                />)} </div>) // takes each component of the messages array and it is assigning it as a message component
   }
 }
 
 class Message extends Component{ //the is the class that is created on line 10
+
+
   messageBuddy() {
     var self = this
-    var username = this.props.message.from
+    // self.props.markTrue(self.props.theKey)
+    var username = self.props.message.from
     browserHistory.push('/Friend/'+ username)
-    self.props.message.setState({received: true})
 
   }
   render(){

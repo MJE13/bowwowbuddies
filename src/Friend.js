@@ -5,6 +5,7 @@ import $ from 'jquery';
 import FriendPane from './FriendPane';
 import {browserHistory} from 'react-router';
 import Messages from './Messages'
+import { apiUrl } from '../config'
 
 export default class Friend extends Component {
 	constructor(props){
@@ -17,7 +18,7 @@ export default class Friend extends Component {
 	componentWillMount(){
 		console.log(this.props)
 		var self = this
-		$.get('http://localhost:3001/api/findFriend/' + this.props.params.username		,
+		$.get(apiUrl + '/api/findFriend/' + this.props.params.username		,
 		    {token: this.props.token}, //checking token to authenticate the user for the ajax call to go through
 		    function(response){ 
 		    	console.log(response)

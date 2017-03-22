@@ -47,7 +47,6 @@ export default class Header extends Component {
 					<img src="Doggies.gif" alt="doglogo" />
 					<div className="menu">
 						<a href="/homepage"> Homepage </a> 
-						<a href="/profile">  Create Profile </a>
 						<a href="/search">  Search </a>		
 					</div>
 						<div>{this.state.token ? <button className="button" onClick={this.logout.bind(this)}>Log out</button> : ''} {/*shows us the state of our header upon login, the clone element, shows current state and makes sure previous state does not interfere*/}

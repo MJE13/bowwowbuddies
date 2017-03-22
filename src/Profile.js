@@ -3,6 +3,8 @@ import './App.css';
 import $ from 'jquery';
 import ReactDom from 'react-dom';
 import {browserHistory} from 'react-router'
+import { apiUrl } from '../config'
+
 
 export default class Profile extends Component {
   constructor(props){
@@ -106,7 +108,7 @@ export default class Profile extends Component {
     }
     $.ajax({
         method: 'POST', 
-        url:'http://localhost:3001/api/user',
+        url: apiUrl + '/api/user',
         processData: false,
         contentType: false,
         data: fd
@@ -135,7 +137,7 @@ export default class Profile extends Component {
           <h1 className="header">Create a Profile</h1>
             <form ref="uploadForm" className="uploader" onSubmit={(e)=> e.preventDefault()} encType="multipart/form-data">
               <div>
-                <h2 htmlFor="headProfile">Owner Profile</h2>
+                <h2 htmlFor="header">Owner Profile</h2>
                 <label htmlFor="user">Create a Username </label>
                 <input className="user" type="textbox" onChange={this.userName.bind(this)}></input><br/>
                 <label htmlFor="password">Create a Password </label>
@@ -146,7 +148,7 @@ export default class Profile extends Component {
                 <textArea className="about" onChange={this.aboutYou.bind(this)}></textArea>
               </div>
               <div>
-                <h2 htmlFor= "headProfile">Dog Profile</h2>
+                <h2 htmlFor= "header">Dog Profile</h2>
                 <div className="imgPreview">
                   {$imagePreview}
                 </div>
@@ -161,27 +163,27 @@ export default class Profile extends Component {
                 </select>
                 <label htmlFor="age">Age </label>
                 <select className="dropdown" onChange={this.ageSet.bind(this)} value={this.state.age}>
-                  <option value="0-6 mo">Less than 6 months</option>
-                  <option value="6-12 mo">6-12 months</option>
-                  <option value="1-2">1-2 years</option>
-                  <option value="2-4">2-4 years</option>
-                  <option value="5-8">5-8 years</option>
-                  <option value="9-12">9-12 years</option>
-                  <option value=">12">over 12 years</option>
+                  <option value="Less than 6 months old">Less than 6 months</option>
+                  <option value="6-12 months old">6-12 months</option>
+                  <option value="1-2 years old">1-2 years</option>
+                  <option value="2-4 years old">2-4 years</option>
+                  <option value="5-8 years old">5-8 years</option>
+                  <option value="9-12 years old">9-12 years</option>
+                  <option value="over 12 years old">over 12 years</option>
                 </select>
                 <label htmlFor="size">Size </label>
                 <select className="dropdown" onChange={this.sizeSet.bind(this)} value={this.state.size}>
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
+                  <option value="Small">Small</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Large">Large</option>
                 </select>
                 <label htmlFor="breed">Breed </label>
                 <input className="breed" type="textbox" onChange={this.setBreed.bind(this)}></input><br/>
                 <label htmlFor="energylevel">Energy Level</label>
                 <select className="dropdown" onChange={this.energylevelSet.bind(this)} value={this.state.energylevel}>
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
                 </select>
                 <label>
                   Vaccinations up to date 

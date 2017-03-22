@@ -16,7 +16,7 @@ var path = require('path');
 
 
 var port = process.env.PORT || 3001;
-mongoose.connect('mongodb://localhost/doghouse');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/doghouse');
 app.set('superSecret', config.secret);
 
 
@@ -28,6 +28,9 @@ var suffix = {
   'image/jpeg' : 'jpg',
   'image/png' : 'png'
 }
+
+app.use(express.static('build'))
+app.use(express.static('public'))
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -102,6 +105,8 @@ app.get('/api/findFriend/:username', searchesController.findFriend)
 
 app.get('/api/sentMessages', requireLogin, messagesController.sentMessages)
 
+app.get('*', function(req, res){
+  res.sendFile(path.join(__dirname + '/build/index.html'));
+})
 
-
-app.listen(3001)
+app.listen(port)

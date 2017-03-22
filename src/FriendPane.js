@@ -14,7 +14,7 @@ export default class FriendPane extends Component {
               <img className="friendprofilepic" src={imgURL} /> <br/>
 
                 
-                About: {about} <br/>
+                {about} <br/>
                 Dog Name: {dogname} <br/>
                 Sex: {sex} <br/>
                 Spayed or Neutered: {sterile} <br/>
@@ -23,7 +23,7 @@ export default class FriendPane extends Component {
                 Size: {size}<br/>
                 Breed: {breed} <br/>
                 Energy Level: {energylevel} <br/>
-                Anything else: {anything} <br/>
+                {anything} <br/>
               </div>            
             </div>)
   }
