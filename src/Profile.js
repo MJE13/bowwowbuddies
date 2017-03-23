@@ -136,7 +136,7 @@ export default class Profile extends Component {
         <div className="App">
         <form ref="uploadForm" className="uploader" onSubmit={(e)=> e.preventDefault()} encType="multipart/form-data">
           <div className="UserProfile">
-            <h2 className="OwnerProfile" htmlFor="headProfile">Owner Profile</h2>
+            <h2 className="headProfile" htmlFor="headProfile">Owner Profile</h2>
               <ul className="flex-outer">
                 <li>
                   <label htmlFor="user">Create a Username</label>
@@ -164,7 +164,7 @@ export default class Profile extends Component {
             <div className="DogProfile">
               <div className="flex-outer">
                 <form>
-                  <h2 htmlFor= "headProfile">Dog Profile</h2>
+                  <h2 className="dogProfile" htmlFor= "headProfile">Dog Profile</h2>
                     <ul class="flex-outer">
                       <li>
                         <label htmlFor="dogname">Name</label>
