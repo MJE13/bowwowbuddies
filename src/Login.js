@@ -47,6 +47,7 @@ export default class Login extends Component {
 	render() {
 		return(
 			<div className="App">
+				<img src="Doggies.gif" alt="doglogo" />
 				<h1 className="header">Bow Wow Buddies</h1>
 				<label htmlFor="Username"> Username</label>
 				<input className="Username" type="textbox" onChange={this.userName.bind(this)}></input>
