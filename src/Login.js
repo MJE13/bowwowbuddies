@@ -4,6 +4,7 @@ import $ from 'jquery';
 import {browserHistory, Link} from 'react-router'
 import { apiUrl } from '../config'
 
+
 export default class Login extends Component {
 	constructor(props){
 		super(props)
@@ -60,7 +61,7 @@ export default class Login extends Component {
 				</section>
 				<div className="LoginButton">
 				<button className="button" onClick={this.submitLogin.bind(this)}> Login</button><br/>
-				<footer className="Join"><a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a></footer>
+				<footer className="Join"><Link to="/profile"> Join the Bow Wow Community :)</Link></footer>
 				</div>
 			</div>
 	)};
