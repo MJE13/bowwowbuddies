@@ -35,7 +35,7 @@ var mongoose = require('mongoose');
         .sort('date')
         .exec((err, messages) => {
             console.log({from: user1, to: user2});
-            Message.update({from: user1, to: user2}, {$set: {received: true}}, {multi: true}, function(err, update){
+            Message.update({from: user1, to: user2}, {$set: {received: true}}, {multi: true}, function(err, update){ //making sure the recieved messages are marked true upon getting to friends profile
                 res.json(messages)
             })
         }) // tests for a match in the string (res.json)

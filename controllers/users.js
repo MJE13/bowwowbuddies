@@ -64,7 +64,7 @@ function authenticate(req, res) {
 				res.json({ success: false, message: 'Authentification failed, wrong password'});
 			} else {
 			
-			var token = jwt.sign(user, config.secret);
+			var token = jwt.sign(user, config.secret, {expiresIn: 60 * 60 * 24 * 30});
 
 			res.json({
 				success: true,

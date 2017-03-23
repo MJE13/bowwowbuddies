@@ -69,7 +69,7 @@ export default class Homepage extends Component {
 					<br/>
 					<div>
 					<HomePane profile={this.state.profile} /> 
-					<label>New Messages!</label>
+					<label className="header">Message Board: </label>
 					<SentMessagePane messages={this.state.messages.slice(Math.max(0, this.state.messages.length-5))} />
 					</div>
 
