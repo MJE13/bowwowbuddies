@@ -297,9 +297,13 @@ flex: 1;
 }
 
  /* LOGIN PAGE STYLIN */
+.header2{
+  font-size: 25px;
+  margin-top: -25px;
+}
 .LoginPageContainer {
+  margin-top: -115px;
   display: flex;
-  flex: auto;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -321,7 +325,7 @@ flex: 1;
   border: 2px solid #1cbe83;
   border-width: .5px;
   border-radius: 5px;
-  /*padding: 1em;*/
+  padding: 1em;
   margin: .6em;
 
 }
@@ -355,6 +359,7 @@ input[type="password"] {
   flex-direction: column;
   width: 10em;
   margin: 1px;
+  margin-top: -55px;
   margin-bottom: 10em;
   padding-bottom: 5px;
   background: white;
@@ -366,7 +371,6 @@ input[type="password"] {
 .button {
   justify-content: center;
   align-items: center;
-  margin-top: auto;
   margin-bottom: 3em;
 }
 
@@ -377,6 +381,6 @@ input[type="password"] {
   align-self: flex-end;
   padding-bottom: .8em;
   margin-bottom: auto;
-  margin-top: auto;
+  margin-top: -35px;
 }
 
