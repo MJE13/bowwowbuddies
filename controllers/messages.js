@@ -2,7 +2,6 @@ var Message = require('../models/messages')
 var User = require('../models/users');
 var mongoose = require('mongoose');
  function create (req, res){
-    console.log('body', req.body);
     var message = new Message ({
         from: req.body.from,
         to: req.body.to,
@@ -34,7 +33,12 @@ var mongoose = require('mongoose');
         $or : [u1toU2, u2toU1]
         })
         .sort('date')
-        .exec((err, messages) => res.json(messages)) // tests for a match in the string (res.json)
+        .exec((err, messages) => {
+            console.log({from: user1, to: user2});
+            Message.update({from: user1, to: user2}, {$set: {received: true}}, {multi: true}, function(err, update){
+                res.json(messages)
+            })
+        }) // tests for a match in the string (res.json)
         //console.log(req, res)     
 }
 function messageFriend(req, res){
@@ -61,5 +65,8 @@ function sentMessages(req, res){
     messageFriend: messageFriend,
     sentMessages: sentMessages
 }
+
+
+
 
 
