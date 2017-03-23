@@ -14,13 +14,14 @@ export default class Header extends Component {
 
 	componentDidMount(){ //research componentDidMount
 		if(document.cookie){// if you get a cookie, it is encoded data; 
-			this.setState(Object.assign(JSON.parse(document.cookie), {cookieLoaded: true})) //.JSON.parse turns the information into an object (notation)
+			this.setState(Object.assign(JSON.parse(document.cookie.split('; {')[0]), {cookieLoaded: true})) //.JSON.parse turns the information into an object (notation)
 		} else { //the assign (above) is adding 'cookieLoaded' key value pair to our document.cookie
 			this.setState({cookieLoaded: true})
 		}
 	}
 
 	login(userdata){
+		document.cookie = '';
 		document.cookie = JSON.stringify(userdata) //contains all of the user data in our header
 		this.setState(Object.assign(userdata, {cookieLoaded: true}))// needed to include cookieloaded field: becuase page was trying to load before page could recieve the cookie
 	}

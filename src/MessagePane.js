@@ -14,9 +14,11 @@ export default class MessagePane extends Component {
 
 class Message extends Component{ //the is the class that is created on line 10
   render(){
-    return (<div>
+    return (<div className = "wrap">
+              <article>
               <span style={nameStyle}> {this.props.message.from} :</span> 
                  {this.props.message.text.join(' ')} {/*not quite sure wtf message.text.join does*/}
+              </article>
             </div>)
   }
 }
