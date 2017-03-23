@@ -47,16 +47,20 @@ export default class Login extends Component {
 	render() {
 		return(
 			<div className="App">
-				<img src="Doggies.gif" alt="doglogo" />
-				<h1 className="header">Bow Wow Buddies</h1>
-				<label htmlFor="Username"> Username</label>
-				<input className="Username" type="textbox" onChange={this.userName.bind(this)}></input>
-				<label htmlFor="Password"> Password</label>
-				<input className="Password" type="password" onChange={this.passWord.bind(this)} value={this.state.password} onKeyPress={this.keyPress.bind(this)}></input>
+				<img src="Doggies.gif" alt="doglogo" /><br/>
+				<div className="LoginHeader"><h1>Bow Wow Buddies</h1></div>
+				<section className="LoginPageContainer">
+				<form className="LoginForm">
+				<input className="Username" type="textbox" placeholder="Username" onChange={this.userName.bind(this)}></input>
+				<input className="Password" type="password" placeholder="Password" onChange={this.passWord.bind(this)} value={this.state.password} onKeyPress={this.keyPress.bind(this)}></input>
+				</form>
+				</section>
+				<div className="clickit">
+				<div className="LoginButton">
 				<button className="button" onClick={this.submitLogin.bind(this)}> Login</button><br/>
-				<Link to="/profile"> Join the Bow Wow Community :)</Link>
+				<footer className="Join"><a href="http://localhost:3000/profile"> Join the Bow Wow Community :)</a></footer>
+				</div>
+				</div>
 			</div>
-
-
 	)};
 }

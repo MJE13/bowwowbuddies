@@ -2,7 +2,6 @@
 .wrap {
   height: 10vh;
   display: flex;
-  text-align: center;
   @media (max-width: 800px) {
   article {
     flex-direction: column;
@@ -135,5 +134,249 @@
   border-color: #1cbe83;
   border-width: 2px;
   height: 200px; 
+}
+main {
+max-height: 100%;
+display: wrap;
+}
+
+body {
+  height: 100%;
+}
+
+.search-list > li {
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0px;
+  padding: 2em;
+}
+
+
+.flex-container{
+  display: flex;
+  flex-direction: column ;
+  min-height: 50%;
+  width: auto;
+}
+
+
+
+img {
+  align-items: center;
+  margin: 0;
+  margin-left: 16px;
+  margin-bottom: 6px;
+  margin-right: 8px;
+}
+
+.searchpanecontainer {
+border: solid #1cbe83;
+border-width: 2px;
+min-height: 100%;
+display: inline-table;
+justify-content: center;
+flex: 1 1 auto;
+overflow: scroll;
+}
+
+.SearchBarContainer {
+  display: flex;
+  height: 30vh;
+  justify-content: center;
+  position: static;
+}
+
+/*Profile Styling*/
+.UserProfile {
+  display: inline-block;
+  justify-content: flex-end;
+  width: 40%;
+  max-width: 1200px;
+  margin: 0;
+}
+
+.UserProfile * {
+  justify-content: center;
+}
+
+.UserProfile form{
+  flex-direction: column;
+}
+
+.UserProfile ul {
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.DogProfile {
+  display: inline;
+}
+
+
+/*#upload {
+  display: flex-box;
+}*/
+
+
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flex-outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+  padding: 10px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: wrap;
+}
+
+
+.flex-outer li,
+.flex-outer li textarea {
+  flex: 3;
+  padding: 15px;
+  border: auto;
+}
+
+.flex-outer li button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #efefef;
+  letter-spacing: .09em;
+  border-radius: 2px;
+}
+
+.flex-inner li {
+  width: 100px;
+}
+
+.flex-inner {
+  justify-content: center;
+  width: 100%;
+
+}
+.ProfileForm {
+display: in;
+flex: 1;
+}
+
+ /* LOGIN PAGE STYLIN */
+.LoginPageContainer {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background: white;
+  height: 60vh;
+}
+
+.LoginHeader {
+  display: inline-flex;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 30px;
+  margin-bottom: auto;
+  justify-content: column;
+  flex-direction: column;
+}
+
+.LoginForm {
+  flex-wrap: wrap;
+  border: 2px solid #1cbe83;
+  border-width: .5px;
+  border-radius: 5px;
+  /*padding: 1em;*/
+  margin: .6em;
+
+}
+
+.LoginForm > * {
+  align-items: top;
+  width: auto;
+  border: 1;
+  line-height: .5;
+  background: white;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+input[type="textbox"] {
+  padding: .4em;
+  align-items: left;
+  flex-basis:500px;
+  margin: 10px;
+}
+
+input[type="password"] {
+  padding: .4em;
+  text-align: left;
+  flex-basis:500px;
+  margin: 10px;
+}
+
+.LoginButton{
+  display: inline-flex;
+  flex-direction: column;
+  width: 10em;
+  margin: 1px;
+  margin-bottom: 10em;
+  padding-bottom: 5px;
+  background: white;
+  justify-content: column;
+  position: relative;
+  top: -5.5em;
+}
+
+.button {
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 3em;
+}
+
+.Join {
+  display: flex;
+  font-family: ;
+  justify-content: center;
+  align-self: flex-end;
+  padding-bottom: .8em;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 

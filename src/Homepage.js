@@ -67,7 +67,7 @@ export default class Homepage extends Component {
 				<div className="Homepage">
 					<h1 className="header">Welcome to Bow Wow Buddies!</h1>
 					<br/>
-					<div>
+					<div className="profileContainer">
 					<HomePane profile={this.state.profile} /> 
 					<label className="header">Message Board: </label>
 					<SentMessagePane messages={this.state.messages.slice(Math.max(0, this.state.messages.length-5))} />

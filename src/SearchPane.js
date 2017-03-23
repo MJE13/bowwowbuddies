@@ -16,20 +16,28 @@ class User extends Component{
   render(){
     const {username, age, dogname, sex, breed, imgURL} = this.props.user //these are constant properties of the user
     return (<div>
-              <h2 className="header">
-                {username} & {dogname}
-              </h2>
-              <div>
-                <img className="SearchPhoto" src={imgURL} /> <br/>
-                <div>
-                  Dog Name: {dogname} <br/>
-                  Sex: {sex} <br/>
-                  Age: {age}<br/>
-                  Breed: {breed} <br/>
-                  <button className="button" onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
-                </div>
-              </div>         
-            </div>)
-  }
-}
+      <div className="full-screen">
+          <div className="flex-container">
+                  <ul className="search-list">
+                  <li>
+                    <h2 className="header">
+                    {username} & {dogname}
+                    </h2>
+                    <div>
+                      <img className="SearchPhoto" src={imgURL} /> <br/>
+                    <div>
+                      Dog Name: {dogname} <br/>
+                      Sex: {sex} <br/>
+                      Age: {age}<br/>
+                      Breed: {breed} <br/>
+                      <button className="button" onClick={this.findBuddy.bind(this)}> View Profile</button><br/>
+                      </div>
+                    </div>
+                     </li>
+                    </ul>
+                    </div>
+                  </div>         
+                </div>)
+      }
+    }
 

@@ -7,7 +7,7 @@ export default class FriendPane extends Component {
         age, size, breed, energylevel, anything} 
           = this.props.profile 
     return (<div>
-              <div className = "App">
+              <div className="App">
                 <h2 className="header">
                   {username} & {dogname}
                 </h2>

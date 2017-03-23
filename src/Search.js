@@ -44,25 +44,34 @@ export default class Search extends Component {
     }
   }
 
-  render() {
-
+render() {
     if(this.props.cookieLoaded && !this.props.token){
       browserHistory.push('/Login')
     }
     return (
       <div>
-      <div className="App">
-      <h1 className="header">Find a Bow Wow!</h1>
-        </div>
-        <div onKeyPress={this.keyPress.bind(this)}>
-          <label htmlFor="location"> Search for dogs within </label>
-          <input className="location" type="textbox" onKeyPress={this.keyPress.bind(this)} value={this.state.distance} onChange={this.distanceSet.bind(this)}></input>
-          <label htmlFor="address"> miles from address:</label>
-          <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
-          <button className="button" onClick={this.searchResult.bind(this)}>Search</button><br/> 
-          <SearchPane userlist={this.state.userlist} />
-        </div>
-        </div>
+              <main>
+                <div className="App">
+                <h1 className="header">Find a Bow Wow!</h1>
+                </div>
+                  <div className="SearchBarContainer">
+                    <div onKeyPress={this.keyPress.bind(this)}>
+                      <ul className="flex-inner">
+                        <label htmlFor="location"> Search for dogs within </label>
+                        <input className="location" type="textbox" onKeyPress={this.keyPress.bind(this)} value={this.state.distance} onChange={this.distanceSet.bind(this)}></input>              
+                     </ul>
+                     <ul className="flex-inner">
+                        <label htmlFor="address"> miles from address:</label>
+                        <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
+                        <button className="button" onClick={this.searchResult.bind(this)}>Search</button><br/> 
+                      </ul>
+                  </div>
+                </div>
+              </main>
+            <div className="searchpanecontainer">
+              <SearchPane userlist={this.state.userlist} />
+            </div>
+      </div>
     );
   }
 }
