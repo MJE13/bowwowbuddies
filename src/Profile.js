@@ -137,7 +137,7 @@ export default class Profile extends Component {
           <h1 className="header">Create a Profile</h1>
             <form ref="uploadForm" className="uploader" onSubmit={(e)=> e.preventDefault()} encType="multipart/form-data">
               <div>
-                <h2 htmlFor="header">Owner Profile</h2>
+                <h2 htmlFor="header" className="header">Owner Profile</h2>
                 <label htmlFor="user">Create a Username </label>
                 <input className="user" type="textbox" onChange={this.userName.bind(this)}></input><br/>
                 <label htmlFor="password">Create a Password </label>
@@ -148,7 +148,7 @@ export default class Profile extends Component {
                 <textArea className="about" onChange={this.aboutYou.bind(this)}></textArea>
               </div>
               <div>
-                <h2 htmlFor= "header">Dog Profile</h2>
+                <h2 htmlFor= "header" className="header">Dog Profile</h2>
                 <div className="imgPreview">
                   {$imagePreview}
                 </div>

@@ -27,7 +27,7 @@ export default class Friend extends Component {
 	}
 
 	render() {
-
+		console.log('processsssssss',process.env)
 		if(this.props.cookieLoaded && !this.props.token){ //checking token to authenticate the user for the ajax call to go through
 		    browserHistory.push('/Login')
 		}

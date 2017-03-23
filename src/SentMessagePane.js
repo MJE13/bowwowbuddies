@@ -8,6 +8,19 @@ var nameStyle = {
 
 export default class SentMessagePane extends Component {
 
+  filterMessages(startArr, messages){
+    var user= messages[0].username
+    var userArr = messages.filter(function(message, user){
+      return message.username === user
+    })
+    userArr.sort(function(a,b){
+      return a.date
+    })
+    messages.filter(function(message){
+
+    })
+  }
+
   // componentWillReceiveProps(){
   //   this.setState({markTrue : this.props.markTrue})
   // }

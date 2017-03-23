@@ -28,8 +28,9 @@ var suffix = {
   'image/jpeg' : 'jpg',
   'image/png' : 'png'
 }
-
-app.use(express.static('build'))
+if(config.env === 'prod'){
+  app.use(express.static('build'))
+}
 app.use(express.static('public'))
 
 var storage = multer.diskStorage({

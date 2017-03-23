@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 import SearchPane from './SearchPane';
@@ -31,39 +30,39 @@ export default class Search extends Component {
 
   searchResult(){
     var self = this
-    console.log("search submitted")
     $.get(apiUrl + '/api/user?token=' + this.props.token, 
           {address: this.state.address, distance: this.state.distance}, 
           function(response){ 
               self.setState({userlist : response})
           })
+    self.setState({distance: ''})
   }
 
   keyPress(event){
     if(event.key === 'Enter'){
       this.searchResult()
-      this.setState({distance: ''})
     }
   }
-    render() {
 
-      if(this.props.cookieLoaded && !this.props.token){
-        browserHistory.push('/Login')
-      }
-      return (
-        <div>
-        <div className="App">
-        <h1 className="header">Find a Bow Wow!</h1>
-          </div>
-          <div>
-            <label htmlFor="location"> Search for dogs within </label>
-            <input className="location" type="textbox" value={this.state.distance} onChange={this.distanceSet.bind(this)}></input>
-            <label htmlFor="address"> miles from address:</label>
-            <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
-            <button className="button" onClick={this.searchResult.bind(this)} onKeyPress={this.keyPress.bind(this)}>Search</button><br/> <br/>
-            <SearchPane userlist={this.state.userlist} />
-          </div>
-          </div>
-      );
+  render() {
+
+    if(this.props.cookieLoaded && !this.props.token){
+      browserHistory.push('/Login')
     }
+    return (
+      <div>
+      <div className="App">
+      <h1 className="header">Find a Bow Wow!</h1>
+        </div>
+        <div onKeyPress={this.keyPress.bind(this)}>
+          <label htmlFor="location"> Search for dogs within </label>
+          <input className="location" type="textbox" onKeyPress={this.keyPress.bind(this)} value={this.state.distance} onChange={this.distanceSet.bind(this)}></input>
+          <label htmlFor="address"> miles from address:</label>
+          <input className="address" type="textbox" value={this.state.address} onChange={this.addressSet.bind(this)}></input><br/>
+          <button className="button" onClick={this.searchResult.bind(this)}>Search</button><br/> 
+          <SearchPane userlist={this.state.userlist} />
+        </div>
+        </div>
+    );
+  }
 }

@@ -21,7 +21,7 @@
 }
 
 .header {
-  font-family: Arial Rounded MT Bold;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 .button {
@@ -92,26 +92,26 @@
 }
 
 .SearchPhoto {
-  border-style: solid;
+  border-style: ridge;
   border-color: #1cbe83;
-  border-width: 5px;
+  border-width: 2px;
   height: 200px; 
 }
 .friendprofilepic {
-  border-style: solid;
+  border-style: ridge;
   border-color: #1cbe83;
-  border-width: 5px;
+  border-width: 2px;
   height: 200px; 
 }
 .homepagepic{
-  border-style: solid;
+  border-style: ridge;
   border-color: #1cbe83;
-  border-width: 5px;
+  border-width: 2px;
   height: 200px; 
 }
 .previewImage{
-  border-style: solid;
+  border-style: ridge;
   border-color: #1cbe83;
-  border-width: 5px;
+  border-width: 2px;
   height: 200px; 
 }

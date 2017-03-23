@@ -16,8 +16,8 @@ class User extends Component{
   render(){
     const {username, age, dogname, sex, breed, imgURL} = this.props.user //these are constant properties of the user
     return (<div>
-              <h2 className="username">
-                {username}
+              <h2 className="header">
+                {username} & {dogname}
               </h2>
               <div>
                 <img className="SearchPhoto" src={imgURL} /> <br/>
